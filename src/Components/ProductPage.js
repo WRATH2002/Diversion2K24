@@ -54,7 +54,7 @@ const ProductPage = (props) => {
           <Navbar />
           {modal === true ? (
             <div
-              className="w-[100%] h-[calc(100svh-80px)] flex justify-center items-center fixed  backdrop-blur-sm "
+              className="w-[100%] h-[calc(100dvh-80px)] flex justify-center items-center fixed  backdrop-blur-sm "
               onClick={() => {
                 // setName(false);
                 // setModal(false);
@@ -276,44 +276,56 @@ const ProductPage = (props) => {
                 </div>
                 <div className="w-full font-[poppins] flex items-center mt-[15px]">
                   {colorMode === 1 ? (
-                    <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#00ff41] flex justify-center items-center rounded-full ">
-                      <div className="w-[30px] h-[30px] rounded-full bg-[#A95565] cursor-pointer "></div>
+                    <div className="h-[40px] w-[40px] flex justify-center items-center">
+                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#0071e3] flex justify-center items-center rounded-full ">
+                        <div className="w-[30px] h-[30px] rounded-full bg-[#A95565] cursor-pointer "></div>
+                      </div>
                     </div>
                   ) : (
-                    <div
-                      className="w-[27px] h-[27px] rounded-full bg-[#A95565] cursor-pointer  "
-                      onClick={() => {
-                        setColorMode(1);
-                      }}
-                    ></div>
+                    <div className="h-[40px] w-[40px] flex justify-center items-center">
+                      <div
+                        className="w-[27px] h-[27px] rounded-full bg-[#A95565] cursor-pointer  "
+                        onClick={() => {
+                          setColorMode(1);
+                        }}
+                      ></div>
+                    </div>
                   )}
                   {colorMode === 2 ? (
-                    <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#00ff41] ml-[17px] flex justify-center items-center rounded-full ">
-                      <div className="w-[30px] h-[30px] rounded-full bg-[white]  cursor-pointer "></div>
+                    <div className="h-[40px] w-[40px] flex justify-center items-center">
+                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#0071e3] flex justify-center items-center rounded-full ">
+                        <div className="w-[30px] h-[30px] rounded-full bg-[white]  cursor-pointer "></div>
+                      </div>
                     </div>
                   ) : (
-                    <div
-                      className="w-[27px] h-[27px] rounded-full bg-[white] ml-[17px] cursor-pointer "
-                      onClick={() => {
-                        setColorMode(2);
-                      }}
-                    ></div>
+                    <div className="h-[40px] w-[40px] flex justify-center items-center">
+                      <div
+                        className="w-[27px] h-[27px] rounded-full bg-[white] cursor-pointer "
+                        onClick={() => {
+                          setColorMode(2);
+                        }}
+                      ></div>
+                    </div>
                   )}
                   {colorMode === 3 ? (
-                    <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#00ff41] ml-[17px] flex justify-center items-center rounded-full ">
-                      <div className="w-[30px] h-[30px] rounded-full bg-[#535353]  cursor-pointer "></div>
+                    <div className="h-[40px] w-[40px] flex justify-center items-center">
+                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#0071e3] flex justify-center items-center rounded-full ">
+                        <div className="w-[30px] h-[30px] rounded-full bg-[#535353]  cursor-pointer "></div>
+                      </div>
                     </div>
                   ) : (
-                    <div
-                      className="w-[27px] h-[27px] rounded-full bg-[#535353] ml-[17px] cursor-pointer "
-                      onClick={() => {
-                        setColorMode(3);
-                      }}
-                    ></div>
+                    <div className="h-[40px] w-[40px] flex justify-center items-center">
+                      <div
+                        className="w-[27px] h-[27px] rounded-full bg-[#535353]  cursor-pointer "
+                        onClick={() => {
+                          setColorMode(3);
+                        }}
+                      ></div>
+                    </div>
                   )}
                 </div>
-                <div className="w-full font-[poppins] font-normal text-[13px] flex justify-start items-center mt-[15px] pr-[50px] ">
-                  <span className="w-[85%] text-[15px] text-[#888888]  pr-[30px]">
+                <div className="w-full font-[poppins] font-normal text-[13px] flex justify-start items-center mt-[15px] pr-[0px] md:pr-[50px] lg:pr-[50px] ">
+                  <span className="w-full md:w-[85%] lg:w-[85%]  text-[17px] md:text-[15px] lg:text-[15px] font-[poppins] text-[#6b6b6b] pr-[0px] md:pr-[50px] text-justify">
                     It is a smart fitband used to{" "}
                     <span className="text-[#00ff41]">track BPM</span> and
                     Location of an old person and it sends notification

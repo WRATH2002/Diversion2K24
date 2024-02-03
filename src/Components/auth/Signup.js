@@ -25,103 +25,103 @@ const Signup = (props) => {
     {
       // Minute:
       Fall: false,
-      Hour: 1,
+      Hour: 2,
       Bpm: 97,
     },
     {
       //  Minute:
       Fall: false,
-      Hour: 1,
+      Hour: 3,
       Bpm: 89,
     },
     {
       //  Minute:
       Fall: false,
-      Hour: 1,
-      Bpm: 104,
-    },
-    {
-      // Minute:
-      Fall: false,
-      Hour: 2,
-      Bpm: 114,
-    },
-    {
-      // Minute:
-      Fall: false,
-      Hour: 2,
-      Bpm: 66,
-    },
-    {
-      // Minute:
-      Fall: false,
-      Hour: 2,
-      Bpm: 76,
-    },
-    {
-      // Minute:
-      Fall: false,
-      Hour: 2,
-      Bpm: 109,
-    },
-    {
-      //  Minute:
-      Fall: false,
-      Hour: 3,
-      Bpm: 69,
-    },
-    {
-      //  Minute:
-      Fall: false,
-      Hour: 3,
-      Bpm: 67,
-    },
-    {
-      // Minute:
-      Fall: false,
-      Hour: 3,
-      Bpm: 92,
-    },
-    {
-      //  Minute:
-      Fall: false,
-      Hour: 3,
-      Bpm: 86,
-    },
-    {
-      //  Minute:
-      Fall: false,
-      Hour: 3,
-      Bpm: 99,
-    },
-    {
-      // Minute:
-      Fall: false,
       Hour: 4,
       Bpm: 104,
-    },
-    {
-      // Minute:
-      Fall: false,
-      Hour: 4,
-      Bpm: 102,
-    },
-    {
-      //  Minute:
-      Fall: false,
-      Hour: 4,
-      Bpm: 80,
-    },
-    {
-      // Minute:
-      Fall: false,
-      Hour: 4,
-      Bpm: 118,
     },
     {
       // Minute:
       Fall: false,
       Hour: 5,
+      Bpm: 114,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 6,
+      Bpm: 66,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 7,
+      Bpm: 76,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 8,
+      Bpm: 109,
+    },
+    {
+      //  Minute:
+      Fall: false,
+      Hour: 9,
+      Bpm: 69,
+    },
+    {
+      //  Minute:
+      Fall: false,
+      Hour: 10,
+      Bpm: 67,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 11,
+      Bpm: 92,
+    },
+    {
+      //  Minute:
+      Fall: false,
+      Hour: 12,
+      Bpm: 86,
+    },
+    {
+      //  Minute:
+      Fall: false,
+      Hour: 13,
+      Bpm: 99,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 14,
+      Bpm: 104,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 15,
+      Bpm: 102,
+    },
+    {
+      //  Minute:
+      Fall: false,
+      Hour: 16,
+      Bpm: 80,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 17,
+      Bpm: 118,
+    },
+    {
+      // Minute:
+      Fall: false,
+      Hour: 18,
       Bpm: 89,
     },
   ];
@@ -170,11 +170,11 @@ const Signup = (props) => {
           className="w-full h-full object-cover "
           src="https://images.unsplash.com/photo-1533135091724-62cc5402aa20?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         ></img>
-        <div className=" fixed font-bold font-[lato] leading-[1] text-[39px] md:text-[70px] lg:text-[70px] text-[#f5f5f7] h-[calc(100%-120px)] flex justify-center items-center w-[calc((100%-120px)/2)]">
+        <div className=" fixed font-bold font-[poppins] leading-[1] text-[39px] md:text-[70px] lg:text-[70px] text-[#f5f5f7] h-[calc(100%-120px)] flex justify-center items-center w-[calc((100%-120px)/2)]">
           Let's get started
         </div>
       </div>
-      <div className="w-full lg:w-[50%] md:w-[50%] p-[10px] md:p-[40px] lg:p-[40px]  h-full flex flex-col justify-center items-center font-[lato]">
+      <div className="w-full lg:w-[50%] md:w-[50%] p-[10px] md:p-[40px] lg:p-[40px]  h-full flex flex-col justify-center items-center font-[poppins]">
         <div className="w-full flex flex-col justify-center items-center">
           <span className="text-[40px]  w-[70%] text-[#ffffff]   font-medium">
             Signup{" "}
@@ -215,7 +215,7 @@ const Signup = (props) => {
           Signup
         </button> */}
         <button
-          className="w-[70%] h-[50px] text-[#000000] font-[lato] font-medium outline-none flex justify-center items-center bg-[#ffffff] hover:bg-[white] hover:text-[black] rounded-md mt-[30px]"
+          className="w-[70%] h-[50px] text-[#000000] font-[poppins] font-medium outline-none flex justify-center items-center bg-[#ffffff] hover:bg-[white] hover:text-[black] rounded-md mt-[30px]"
           style={{ transition: ".3s" }}
           type="submit"
           onClick={signUp}
