@@ -5,12 +5,14 @@ import { HiOutlineStatusOnline } from "react-icons/hi";
 import Navbar from "./Navbar";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import AuthDetails from "./AuthDetails";
 import { FaAngleDown } from "react-icons/fa6";
+import { onSnapshot } from "firebase/firestore";
+import firebase from "../firebase";
 
 const TrackingPage = () => {
-  const [status, setStatus] = useState(true);
+  const [status, setStatus] = useState(false);
 
   const [authUser, setAuthUser] = useState(null);
 
@@ -26,6 +28,28 @@ const TrackingPage = () => {
       listen();
     };
   }, []);
+
+  useEffect(() => {
+    fetchFallState();
+  }, []);
+
+  function fetchFallState() {
+    const user1 = firebase.auth().currentUser;
+    const StateRef = db.collection("USERS").doc(user1?.uid);
+    onSnapshot(StateRef, (snapshot) => {
+      console.log("snapshot.data().state");
+      console.log(snapshot.data().state);
+      setStatus(snapshot.data().state);
+    });
+  }
+
+  function ignoreFallState() {
+    const user1 = firebase.auth().currentUser;
+    const StateRef = db
+      .collection("USERS")
+      .doc(user1?.uid)
+      .update({ state: false });
+  }
   return (
     <>
       {authUser ? (
@@ -72,7 +96,7 @@ const TrackingPage = () => {
                     <button
                       className="w-[37%] md:w-[37%] lg:w-[37%] h-[50px] font-[poppins] font-medium text-[white] rounded-xl bg-[#30baff] hover:bg-[#4383c4]"
                       onClick={() => {
-                        setStatus(false);
+                        ignoreFallState();
                       }}
                     >
                       Ignore

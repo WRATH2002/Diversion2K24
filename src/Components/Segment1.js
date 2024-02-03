@@ -23,7 +23,10 @@ const Segment1 = () => {
         </div>
       </div>
       <div className="h-full w-[50%]  p-[20px] hidden md:flex lg:flex justify-center items-center rounded-lg">
-        <img className="w-full rounded-lg" src={g}></img>
+        <img
+          className="w-full rounded-lg"
+          src="https://i.pinimg.com/564x/44/ad/ee/44adee7c5a5b28c0507256e9805de982.jpg"
+        ></img>
       </div>
     </div>
   );
