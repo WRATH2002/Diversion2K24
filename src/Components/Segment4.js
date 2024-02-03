@@ -16,10 +16,10 @@ const Segment4 = () => {
             <span className="leading-[1] text-[22px] md:text-[26px] lg:text-[26px] text-[##f5f5f7] font-[poppins] w-full">
               Buy Product
             </span>
-            <span className="font-bold leading-[1] text-[39px] md:text-[50px] font-[poppins] lg:text-[50px] text-[#f5f5f7] mt-[10px] w-full flex justify-start">
+            <span className="font-bold leading-[1] text-[43px] md:text-[50px] font-[poppins] lg:text-[50px] text-[#f5f5f7] mt-[10px] w-full flex justify-start">
               Your device is not connected
             </span>
-            <span className="leading-normal font-normal font-[poppins] text-[18px] md:text-[15px] lg:text-[15px] mt-[40px] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
+            <span className="leading-normal font-normal font-[poppins] text-[17px] md:text-[15px] lg:text-[15px] mt-[40px] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
               Buy now this <span className="text-[#00ff41]">made in India</span>{" "}
               product and track your daily routine.
             </span>
