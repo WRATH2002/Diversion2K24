@@ -15,10 +15,38 @@ import { TbDeviceWatchOff } from "react-icons/tb";
 
 const TrackingPage = () => {
   const [status, setStatus] = useState(false);
-  const [wornStatus, setWornStatus] = useState(false);
+  const [wornStatus, setWornStatus] = useState(true);
   const [lastBpm, setLastBpm] = useState("");
   const [authUser, setAuthUser] = useState(null);
+  const [dataSize, setDataSize] = useState(0);
+  const [prevDataSize, setPrevDataSize] = useState(0);
+  const [lastUpdated, setLastUpdated] = useState(Date.now());
+  const [flag, setFlag] = useState(0);
   // const recordData = [];
+  let recordData;
+
+  useEffect(() => {
+    setLastUpdated(Date.now());
+    console.log("time changeddddd");
+    console.log(Date.now());
+  }, [recordData]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const timeElapsed = Date.now() - lastUpdated;
+      const timeLimit = 5000; // 5000 milliseconds = 5 seconds
+
+      if (timeElapsed > timeLimit) {
+        // If state hasn't been modified for 5 seconds, set booleanState to true
+        setWornStatus(false);
+      } else {
+        // Otherwise, reset booleanState to false
+        setWornStatus(true);
+      }
+    }, 1000); // Check every second
+
+    return () => clearInterval(interval);
+  }, [lastUpdated]);
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -39,6 +67,13 @@ const TrackingPage = () => {
     }
   }, [authUser]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      console.log("This will run after 1 second!");
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
   function fetchFallState() {
     const user1 = firebase.auth().currentUser;
     const StateRef = db.collection("USERS").doc(user1?.uid);
@@ -47,14 +82,17 @@ const TrackingPage = () => {
       // console.log(snapshot.data().state);
       setStatus(snapshot.data()?.state);
       console.log("lengthhhhhhhhhhhh");
-      let recordData = snapshot.data()?.Data;
+      recordData = snapshot.data()?.Data;
       console.log(recordData);
-      if (recordData[recordData?.length - 1].Bpm != "") {
-        setWornStatus(true);
-      } else {
-        setWornStatus(false);
-      }
+      // if (recordData[recordData?.length - 1].Bpm != "") {
+      //   setWornStatus(true);
+      // } else {
+      //   setWornStatus(false);
+      // }
       setLastBpm(recordData[recordData?.length - 1]?.Bpm);
+      // setPrevDataSize(dataSize);
+      // setDataSize(recordData[recordData?.length - 1]);
+      setLastUpdated(Date.now());
     });
   }
 

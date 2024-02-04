@@ -4,7 +4,15 @@ import product from "../Assets/img/product.jpeg";
 import ambulance from "../Assets/img/ambulance.jpeg";
 import productcart from "../Assets/img/productcart.jpeg";
 import tracking from "../Assets/img/tracking.jpeg";
-import pr from "../Assets/img/pr.png";
+import one1 from "../Assets/img/1.png";
+import one2 from "../Assets/img/2.png";
+import one3 from "../Assets/img/3.png";
+import two1 from "../Assets/img/4.png";
+import two2 from "../Assets/img/5.png";
+import two3 from "../Assets/img/6.png";
+import three1 from "../Assets/img/10.png";
+import three2 from "../Assets/img/11.png";
+import three3 from "../Assets/img/12.png";
 import pr2 from "../Assets/img/pr2.png";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { FaAngleRightt } from "react-icons/fa6";
@@ -31,6 +39,8 @@ const ProductPage = (props) => {
   const [inCare, setInCare] = useState("");
   const [inId, setInId] = useState("");
   const [inCom, setInCom] = useState("");
+
+  const [imageSLider, setImageSlider] = useState(1);
 
   const [colorMode, setColorMode] = useState(1);
   // const [inName, setInName] = useState("");
@@ -262,11 +272,73 @@ const ProductPage = (props) => {
             <></>
           )}
           <div className="w-full h-[calc(100svh-80px)] bg-[#000000] flex flex-col md:flex-row lg:flex-row  justify-sart items-center p-[40px] pt-0  z-30">
-            <div className="w-full md:w-[50%] lg:w-[50%] h-[45%] md:h-full lg:h-full  flex justify-center items-center ">
-              <div className="h-full w-full  flex justify-center items-center">
-                <img className="h-full object-cover " src={pr2}></img>
+            <div className="w-full md:w-[50%] lg:w-[50%] h-[45%] md:h-full lg:h-full  flex flex-col justify-center items-center p-[6%]">
+              <div className="h-[calc(100%-10px)] w-full  flex justify-center items-center">
+                {colorMode === 2 ? (
+                  <>
+                    {imageSLider === 1 ? (
+                      <img className="h-full object-cover " src={one1}></img>
+                    ) : imageSLider === 2 ? (
+                      <img className="h-full object-cover " src={one2}></img>
+                    ) : (
+                      <img className="h-full object-cover " src={one3}></img>
+                    )}
+                  </>
+                ) : colorMode === 1 ? (
+                  <>
+                    {imageSLider === 1 ? (
+                      <img className="h-full object-cover " src={two1}></img>
+                    ) : imageSLider === 2 ? (
+                      <img className="h-full object-cover " src={two2}></img>
+                    ) : (
+                      <img className="h-full object-cover " src={two3}></img>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {imageSLider === 1 ? (
+                      <img className="h-full object-cover " src={three1}></img>
+                    ) : imageSLider === 2 ? (
+                      <img className="h-full object-cover " src={three2}></img>
+                    ) : (
+                      <img className="h-full object-cover " src={three3}></img>
+                    )}
+                  </>
+                )}
               </div>
-              <div className="w-full fixed flex justify-start items-center left-[40px] ">
+              <div className="w-full h-[3px] flex justify-center items-center">
+                {imageSLider === 1 ? (
+                  <div className="w-[20px] h-[5px] bg-[#0071e3] rounded-full mx-[3px] cursor-pointer"></div>
+                ) : (
+                  <div
+                    className="w-[20px] h-[5px] bg-slate-50 rounded-full mx-[3px] cursor-pointer"
+                    onClick={() => {
+                      setImageSlider(1);
+                    }}
+                  ></div>
+                )}
+                {imageSLider === 2 ? (
+                  <div className="w-[20px] h-[5px] bg-[#0071e3] rounded-full mx-[3px] cursor-pointer"></div>
+                ) : (
+                  <div
+                    className="w-[20px] h-[5px] bg-slate-50 rounded-full mx-[3px] cursor-pointer"
+                    onClick={() => {
+                      setImageSlider(2);
+                    }}
+                  ></div>
+                )}
+                {imageSLider === 3 ? (
+                  <div className="w-[20px] h-[5px] bg-[#0071e3] rounded-full mx-[3px] cursor-pointer"></div>
+                ) : (
+                  <div
+                    className="w-[20px] h-[5px] bg-slate-50 rounded-full mx-[3px] cursor-pointer"
+                    onClick={() => {
+                      setImageSlider(3);
+                    }}
+                  ></div>
+                )}
+              </div>
+              {/* <div className="w-full fixed flex justify-start items-center left-[40px] ">
                 <div className=" w-[30px] h-[30px] flex justify-center itemc">
                   <FaAngleLeft className="text-white text-[20px]" />
                 </div>
@@ -275,7 +347,7 @@ const ProductPage = (props) => {
                 <div className=" w-[30px] h-[30px] flex justify-center itemc">
                   <FaAngleRight className="text-white text-[20px]" />
                 </div>
-              </div>
+              </div> */}
             </div>
             <div className="w-full md:w-[50%] lg:w-[50%] h-[55%] md:h-full lg:h-full flex flex-col justify-between md:justify-center lg:justify-center items-center md:items-start lg:items-start">
               <div className="w-full">

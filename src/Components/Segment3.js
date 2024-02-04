@@ -1,4 +1,13 @@
 import React from "react";
+import one1 from "../Assets/img/1.png";
+import one2 from "../Assets/img/2.png";
+import one3 from "../Assets/img/3.png";
+import two1 from "../Assets/img/4.png";
+import two2 from "../Assets/img/5.png";
+import two3 from "../Assets/img/6.png";
+import three1 from "../Assets/img/10.png";
+import three2 from "../Assets/img/11.png";
+import three3 from "../Assets/img/12.png";
 
 const Segment3 = () => {
   return (
@@ -22,10 +31,7 @@ const Segment3 = () => {
         </div>
       </div>
       <div className="h-full w-[50%]  p-[20px] hidden md:flex lg:flex justify-center items-center rounded-lg">
-        <img
-          className="w-full rounded-lg"
-          src="https://img.freepik.com/free-photo/beautiful-shot-small-lake-with-wooden-rowboat-focus-breathtaking-clouds-sky_181624-2490.jpg?w=1480&t=st=1706714949~exp=1706715549~hmac=d7fbe781289590da656a26fe560f2afbdd940d279776ae881bb519de840da16e"
-        ></img>
+        <img className="w-full rounded-lg" src={three1}></img>
       </div>
     </div>
   );

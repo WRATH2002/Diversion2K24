@@ -1,5 +1,14 @@
 import React from "react";
 import g from "../Assets/img/g.png";
+import one1 from "../Assets/img/1.png";
+import one2 from "../Assets/img/2.png";
+import one3 from "../Assets/img/3.png";
+import two1 from "../Assets/img/4.png";
+import two2 from "../Assets/img/5.png";
+import two3 from "../Assets/img/6.png";
+import three1 from "../Assets/img/10.png";
+import three2 from "../Assets/img/11.png";
+import three3 from "../Assets/img/12.png";
 
 const Segment1 = () => {
   return (
@@ -23,10 +32,7 @@ const Segment1 = () => {
         </div>
       </div>
       <div className="h-full w-[50%]  p-[20px] hidden md:flex lg:flex justify-center items-center rounded-lg">
-        <img
-          className="w-full rounded-lg"
-          src="https://i.pinimg.com/564x/44/ad/ee/44adee7c5a5b28c0507256e9805de982.jpg"
-        ></img>
+        <img className="w-full rounded-lg" src={one1}></img>
       </div>
     </div>
   );
