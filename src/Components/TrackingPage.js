@@ -10,11 +10,15 @@ import AuthDetails from "./AuthDetails";
 import { FaAngleDown } from "react-icons/fa6";
 import { onSnapshot } from "firebase/firestore";
 import firebase from "../firebase";
+import { TbDeviceWatch } from "react-icons/tb";
+import { TbDeviceWatchOff } from "react-icons/tb";
 
 const TrackingPage = () => {
   const [status, setStatus] = useState(false);
-
+  const [wornStatus, setWornStatus] = useState(false);
+  const [lastBpm, setLastBpm] = useState("");
   const [authUser, setAuthUser] = useState(null);
+  // const recordData = [];
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -30,16 +34,27 @@ const TrackingPage = () => {
   }, []);
 
   useEffect(() => {
-    fetchFallState();
-  }, []);
+    if (authUser) {
+      fetchFallState();
+    }
+  }, [authUser]);
 
   function fetchFallState() {
     const user1 = firebase.auth().currentUser;
     const StateRef = db.collection("USERS").doc(user1?.uid);
     onSnapshot(StateRef, (snapshot) => {
       console.log("snapshot.data().state");
-      console.log(snapshot.data().state);
-      setStatus(snapshot.data().state);
+      // console.log(snapshot.data().state);
+      setStatus(snapshot.data()?.state);
+      console.log("lengthhhhhhhhhhhh");
+      let recordData = snapshot.data()?.Data;
+      console.log(recordData);
+      if (recordData[recordData?.length - 1].Bpm != "") {
+        setWornStatus(true);
+      } else {
+        setWornStatus(false);
+      }
+      setLastBpm(recordData[recordData?.length - 1]?.Bpm);
     });
   }
 
@@ -64,7 +79,10 @@ const TrackingPage = () => {
                 <div className="text-white font-[poppins] text-[17px] font-medium flex justify-start items-center mt-[20px]">
                   BPM{" "}
                   <PiHeartbeat className="text-[#ff7f2f] font-[poppins] text-[27px] ml-[10px] mt-[0px] mr-[10px]" />{" "}
-                  :<span className="ml-[10px] font-normal text-[17px]">78</span>
+                  :
+                  <span className="ml-[10px] font-normal text-[17px]">
+                    {lastBpm ? <>{lastBpm}</> : <>-</>}
+                  </span>
                 </div>
                 <div className="text-white text-[17px] font-[poppins]   font-medium flex justify-start items-center mt-[10px]">
                   Status{" "}
@@ -82,6 +100,26 @@ const TrackingPage = () => {
                     ) : (
                       <div className="text-[#1bff1b] font-[poppins]">
                         No Fall Detected
+                      </div>
+                    )}
+                  </span>
+                </div>
+                <div className="text-white text-[17px] font-[poppins]   font-medium flex justify-start items-center mt-[10px]">
+                  Device Worn{" "}
+                  {wornStatus === false ? (
+                    <TbDeviceWatchOff className="text-[#dd3232] text-[27px] ml-[10px] mt-[0px] mr-[10px]" />
+                  ) : (
+                    <TbDeviceWatch className="text-[#1bff1b] text-[27px] ml-[10px] mt-[0px] mr-[10px]" />
+                  )}{" "}
+                  :
+                  <span className="ml-[10px]  font-normal text-[17px]">
+                    {wornStatus === false ? (
+                      <div className="text-[#dd3232] font-[poppins]">
+                        Device Not Wearing
+                      </div>
+                    ) : (
+                      <div className="text-[#1bff1b] font-[poppins]">
+                        Device Wearing
                       </div>
                     )}
                   </span>

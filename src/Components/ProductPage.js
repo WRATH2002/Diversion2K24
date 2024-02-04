@@ -54,7 +54,7 @@ const ProductPage = (props) => {
           <Navbar />
           {modal === true ? (
             <div
-              className="w-[100%] h-[calc(100dvh-80px)] flex justify-center items-center fixed  backdrop-blur-sm "
+              className="w-[100%] h-[calc(100dvh)] flex justify-center top-0 items-center fixed  backdrop-blur-sm "
               onClick={() => {
                 // setName(false);
                 // setModal(false);
