@@ -47,7 +47,7 @@ const LandingPage = () => {
         <>
           <Navbar data={4} />
 
-          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[#000000]">
+          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[#000000] px-[8%] md:px-[20%] lg:px-[20%]">
             <Segment1 />
             <Segment2 />
             <Segment3 />

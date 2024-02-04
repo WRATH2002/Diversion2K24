@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Segment4 = () => {
   return (
-    <div className="w-[70%] md:w-[80%] lg:w-[80%] bg-[] backdrop-blur-sm     h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]  rounded-3xl flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end px-[0] md:p-[40px] lg:p-[40px]  ">
+    <div className="w-full bg-[] backdrop-blur-sm     h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]  rounded-3xl flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end  ">
       <div className="h-full w-[50%]  p-[20px] hidden md:flex lg:flex justify-center items-center rounded-lg">
         <img
           className="w-full rounded-lg "

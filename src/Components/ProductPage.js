@@ -13,9 +13,10 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import Navbar from "./Navbar";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import AuthDetails from "./AuthDetails";
 import OutsideClickHandler from "react-outside-click-handler";
+import firebase from "../firebase";
 const ProductPage = (props) => {
   const [authUser, setAuthUser] = useState(null);
   const [modal, setModal] = useState(false);
@@ -47,6 +48,17 @@ const ProductPage = (props) => {
       listen();
     };
   }, []);
+
+  function sendDataToFirestore() {
+    const user = firebase.auth().currentUser;
+    db.collection("USERS").doc(user.uid).update({
+      PatientName: inName,
+      Address: inAdd,
+      CaretakerName: inCare,
+      InsuranceId: inId,
+      InsuranceCompany: inCom,
+    });
+  }
   return (
     <>
       {authUser ? (
@@ -237,6 +249,7 @@ const ProductPage = (props) => {
                       setInCare("");
                       setInId("");
                       setInCom("");
+                      sendDataToFirestore();
                     }}
                   >
                     Submit

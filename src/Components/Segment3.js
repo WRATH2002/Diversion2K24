@@ -2,7 +2,7 @@ import React from "react";
 
 const Segment3 = () => {
   return (
-    <div className="w-[70%] md:w-[80%] lg:w-[80%] bg-[] backdrop-blur-sm    h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]   flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end px-[0] md:p-[40px] lg:p-[40px] border-b-[2px] md:border-b-[0px] lg:border-b-[0px] border-b-[#414141] ">
+    <div className="w-full bg-[] backdrop-blur-sm    h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]   flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end  border-b-[2px] md:border-b-[0px] lg:border-b-[0px] border-b-[#414141] ">
       <div className="w-full  md:w-[50%] lg:w-[50%] h-full flex justify-center items-center  text-[white] font-[poppins] p-[0] md:p-[20px] lg:p-[20px]  ">
         <div className="w-full h-full flex flex-col items-center justify-center ">
           <span className="leading-[1] text-[22px] md:text-[26px] lg:text-[26px] text-[##f5f5f7] font-[poppins] w-full">

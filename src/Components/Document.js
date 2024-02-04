@@ -13,7 +13,7 @@ const Document = () => {
           <span className="leading-[1] text-[24px] md:text-[26px] lg:text-[26px] mt-[40px] text-[##f5f5f7] font-[poppins] text-white w-full">
             Introduction
           </span>
-          <span className="leading-normal font-normal text-[17px] md:text-[15px] lg:text-[15px] mt-[10px] font-[poppins] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
+          <span className="leading-normal font-normal text-[15px] md:text-[15px] lg:text-[15px] mt-[10px] font-[poppins] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
             The SmartWatch Companion for Elderly Care is a wearable device
             designed to enhance the safety and well-being of senior citizens. It
             combines the functionality of a smartwatch with advanced health
