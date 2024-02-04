@@ -25,9 +25,10 @@ const Segment4 = () => {
             <span className="font-bold leading-[1] text-[43px] md:text-[50px] font-[poppins] lg:text-[50px] text-[#f5f5f7] mt-[10px] w-full flex justify-start">
               Your device is not connected
             </span>
-            <span className="leading-normal font-normal font-[poppins] text-[17px] md:text-[15px] lg:text-[15px] mt-[40px] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
-              Buy now this <span className="text-[#00ff41]">made in India</span>{" "}
-              product and track your daily routine.
+            <span className="leading-normal font-normal font-[poppins] text-[17px] md:text-[15px] lg:text-[17px] mt-[40px] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
+              
+Purchase this<span className="text-[#96dd62] font-['poppins']"> Made in India</span>{" "}
+product now and monitor your loved ones health seamlessly.
             </span>
             <div className="w-full   flex justify-end items-center mt-[20px]">
               <Link to="/product">

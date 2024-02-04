@@ -227,9 +227,9 @@ export const Data = () => {
         <YAxis type="number" domain={[50, "dataMax + 20"]} />
         <Tooltip content={<CustomTooltip />} />
         <Legend />
-        <Line type="monotone" dataKey="Max" stroke="#3b82f6" />
+        <Line type="monotone" dataKey="Max" stroke="#ff7b00" />3b82f6
         <Line type="monotone" dataKey="Min" stroke="#72f63b" />
-        <Line type="monotone" dataKey="Avg" stroke="#ff7b00" />
+        <Line type="monotone" dataKey="Avg" stroke="#3b82f6" />
       </LineChart>
       {/* <AreaChart
         width={730}

@@ -6,11 +6,12 @@ import { useState } from "react";
 // import { useDispatch } from "react-redux";
 // import { toggleStateMode } from "../../utils/chatSlice";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 // import { auth } from "../firebase";
 // import { onAuthStateChanged, signOut } from "firebase/auth";
 // import { db } from "../firebase";
 // import firebase from "../../firebase";
-
+const logoUrl = process.env.PUBLIC_URL + "/logo.png";
 const Signup = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -165,6 +166,30 @@ const Signup = (props) => {
   return (
     <>
       <Toaster position="bottom-center" reverseOrder={false} />
+      <div className="fixed top-0 w-[calc(100%-120px)] h-[60px] flex justify-start items-center bg-[#000000] left-[20px] md:left-[60px] lg:left-[60px]">
+        {/* <div className="w-[calc(100%-20px)] md:w-[100%] lg:w-[100%] px-[20px] bg-[#ffffff]/15 rounded-full  h-[50px] flex justify-start items-center z-50 "> */}
+        <Link to="/home">
+          <div className="text-[25px] font-[mukta] font-bold flex justify-center items-center text-[#00ff41]">
+            <img
+              src={logoUrl}
+              alt="Logo"
+              style={{ width: "30px", height: "28px" }}
+            />
+          </div>
+        </Link>
+
+        <Link to="/documentation">
+          <div className="text-[16px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-white">
+            Documentation
+          </div>
+        </Link>
+        <Link to="/solutions">
+          <div className="text-[16px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-white">
+            Solution
+          </div>
+        </Link>
+        {/* </div> */}
+      </div>
       <div className="w-full lg:w-[50%] md:w-[50%]  h-full hidden md:flex lg:flex flex-col justify-center items-center">
         <img
           className="w-full h-full object-cover "

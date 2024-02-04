@@ -16,18 +16,14 @@ const Segment1 = () => {
       <div className="w-full  md:w-[50%] lg:w-[50%] h-full flex justify-center items-center  text-[white] font-[poppins] p-[0] md:p-[20px] lg:p-[20px] ">
         <div className="w-full h-full flex flex-col items-center justify-center ">
           <span className="leading-[1] text-[22px] md:text-[26px] lg:text-[26px] text-[##f5f5f7] font-[poppins] w-full">
-            your device is not connected with WiFi
+          experience precision, embrace wellness
           </span>
           <span className="font-bold leading-[1] text-[43px] md:text-[50px] lg:text-[50px] text-[#f5f5f7] font-[poppins] mt-[10px] w-full flex justify-start">
-            Connect Your Device
+            Vital Tracker
           </span>
-          <span className="leading-normal font-normal text-[17px] md:text-[15px] lg:text-[15px] mt-[40px] font-[poppins] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the <span className="text-[#85caf6]">1500s</span>, when
-            an <span className="text-[#85caf6]">unknown printer</span> took a
-            galley of type and scrambled it to make a type specimen book. It has
-            survived not only five centuries.
+          <span className="leading-normal font-normal text-[17px] md:text-[15px] lg:text-[17px] mt-[40px] font-[poppins] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
+            
+            Introducing our life-saving smart wrist gadget – a guardian for the elderly and the sick. With a mission to reduce the alarming statistics of falls, our innovative device employs cutting-edge technology <span className="text-[#85caf6]  font-['poppins']" >and advanced algorithms </span>to swiftly detect falls,<span className="text-[#85caf6] font-['poppins']"> triggering immediate alerts</span>  for timely assistance. Prioritize safety and well-being  invest in peace of mind today.
           </span>
         </div>
       </div>

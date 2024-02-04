@@ -23,10 +23,10 @@ const Segment2 = () => {
           <span className="font-bold leading-[1] text-[43px] md:text-[50px] lg:text-[50px] text-[#f5f5f7] font-[poppins] mt-[10px] w-full flex justify-start">
             We are always ready to help you out
           </span>
-          <span className="leading-normal font-normal text-[17px] md:text-[15px] lg:text-[15px] mt-[40px] font-[poppins] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
+          <span className="leading-normal font-normal text-[17px] md:text-[15px] lg:text-[17px] mt-[40px] font-[poppins] text-[#6b6b6b] w-full overflow-hidden text-ellipsis text-justify">
             Elevate safety for the elderly with our discreet wrist device. It
             offers a range of features to enhance well-being, providing a{" "}
-            <span className="text-[#da99fe]">vigilant companion</span> and
+            <span className="text-[#da99fe] font-['poppins']">vigilant companion</span> and
             empowering independence for graceful aging.
           </span>
         </div>
