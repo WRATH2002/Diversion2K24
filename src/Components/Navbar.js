@@ -23,130 +23,49 @@ const Navbar = (props) => {
   };
 
   return (
-    <div className="w-[100%] h-[80px] flex justify-center items-center bg-[#000000] px-0 md:px-[160px] lg:px-[160px]">
-      {/* <div className="w-[60%] drop-shadow-xl px-[10px] bg-[#28293d] rounded-full fixed min-h-[60px] mt-[10px] flex justify-between items-center z-50">
-        <div className="flex pl-[10px] justify-start items-center h-full w-full">
-          <div className="text-[25px] font-[mukta] font-medium flex justify-center items-center text-[#00ff41]">
-            Know BPM
-          </div>
-          <div className="text-[16px] cursor-pointer flex justify-center items-center ml-[90px] font-[lato] font-medium text-white">
-            Documentation
-          </div>
-          <div className="text-[16px] cursor-pointer flex justify-center items-center ml-[40px] font-[lato] font-medium text-white">
-            Solution
-          </div>
-        </div>
-        <div
-          className="w-[40px] h-[40px] rounded-full bg-[#00ff41] text-[black] text-[25px] font-[lato] font-medium flex justify-center items-center cursor-pointer z-50"
-          onClick={() => {
-            setToggleProfile(!toggleProfile);
-          }}
-        >
-          H
-        </div>
-      </div> */}
-      <div className="w-[calc(100%-20px)] md:w-[100%] lg:w-[100%] px-[20px] bg-[#262626] rounded-full  h-[50px] flex justify-between items-center z-50 ">
-        <div className="hidden md:flex lg:flex justify-start items-center h-full w-full">
-          {/* <Link to="/home"> */}
-          <div className="text-[25px] w-[30px] font-[mukta] font-bold flex justify-center items-center text-[#00ff41]">
-            <img
-              src={logoUrl}
-              alt="Logo"
-              // style={{ width: "30px", height: "28px" }}
-              className="w-full object-cover"
-            />
-          </div>
-          {/* </Link> */}
-          <Link to="/home">
-            {props.data === 4 ? (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[poppins] font-medium text-white">
-                Home
-              </div>
-            ) : (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[poppins] font-medium text-[#979797]">
-                Home
-              </div>
-            )}
-          </Link>
-          <Link to="/data">
-            {props.data === 1 ? (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-white">
-                Dashboard
-              </div>
-            ) : (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#979797]">
-                Dashboard
-              </div>
-            )}
-          </Link>
-          <Link to="/solutions">
-            {props.data === 2 ? (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[white]">
-                Solution
-              </div>
-            ) : (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#979797]">
-                Solution
-              </div>
-            )}
-          </Link>
-          <Link to="/documentation">
-            {props.data === 3 ? (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[white]">
-                Documentation
-              </div>
-            ) : (
-              <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#979797]">
-                Documentation
-              </div>
-            )}
-          </Link>
-        </div>
-        <div className="w-[calc(100%-40px)] h-full flex md:hidden lg:hidden justify-start items-center">
-          {/* <div
-            className="w-[60px] h-[60px] flex justify-start items-center"
-            onClick={() => {
-              setToggle(true);
-            }}
+    <>
+      {toggleProfile === true ? (
+        <>
+          <div
+            className="fixed w-auto h-[60px] rounded-xl  bg-[#ffffffeb] backdrop-blur-md drop-shadow-md  top-[80px] right-[13%] flex flex-col justify-start  items-start px-[20px] z-50 text-[black]"
+            // style={{ transition: ".4s" }}
           >
-            <IoReorderThree className="text-[40px] text-white" />
-          </div> */}
-
-          {toggle === true ? (
+            {/* <div className="w-full mt-[15px] h-[30px] font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
+              Register
+            </div>
+            <div className="w-full h-[30px] font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
+              Login
+            </div> */}
             <div
-              className="w-[50px] h-[50px] flex justify-start items-center"
+              className="w-full h-[30px] font-[poppins] mt-[15px] text-[14px] cursor-pointer flex justify-start items-center"
               onClick={() => {
-                setToggle(false);
+                userSignOut();
               }}
             >
-              <RxCross2 className="text-[30px] text-white" />
+              Logout
             </div>
-          ) : (
-            <div
-              className="w-[60px] h-[60px] flex justify-start items-center"
-              onClick={() => {
-                setToggle(true);
-                setToggleProfile(false);
-              }}
-            >
-              <IoReorderThree className="text-[40px] text-white" />
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            className="fixed w-[180px] h-[0] overflow-y-hidden backdrop-blur-md top-[80px] right-[10px] md:right-[160px] lg:right-[160px] rounded-2xl flex flex-col justify-start  items-start pl-[20px] z-50 text-[white]"
+            // style={{ transition: ".4s" }}
+          >
+            {/* <div className="w-full mt-[15px] min-h-[30px] overflow-y-hidden font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
+              Register
             </div>
-          )}
-        </div>
-        <div
-          className="w-[30px] h-[30px] rounded-full bg-[#6e6e73] text-[black] text-[20px] font-[poppins] font-medium flex justify-center items-center cursor-pointer z-50"
-          onClick={() => {
-            setToggleProfile(!toggleProfile);
-            setToggle(false);
-          }}
-        >
-          H
-        </div>
-      </div>
-      {/* <div className="w-[90%]  min-h-[80px] pt-[10px] bg-[#1c1c28] flex justify-between items-center"></div> */}
-
+            <div className="w-full min-h-[30px] overflow-y-hidden font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
+              Login
+            </div> */}
+            <div className="w-full mt-[15px] min-h-[30px] overflow-y-hidden font-[poppins] text-[14px] cursor-pointer flex justify-start items-center">
+              Logout
+            </div>
+          </div>
+        </>
+      )}
       {toggle === true ? (
-        <div className="w-[calc(100%-20px)] rounded-2xl bg-[#262626] h-[150px] fixed top-[80px] flex flex-col justify-start text-white z-50 items-start pl-[20px]">
+        <div className="w-[100%]  bg-[#fffffff6] h-[150px] fixed top-[80px]  flex backdrop-blur-md drop-shadow-md flex-col justify-start text-black  z-50 items-start pl-[13%]">
           {props.data === 4 ? (
             <Link to="/home">
               <div className="w-full mt-[15px] h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center ">
@@ -216,49 +135,121 @@ const Navbar = (props) => {
       ) : (
         <div></div>
       )}
-
-      {toggleProfile === true ? (
-        <>
-          <div
-            className="fixed w-[180px] h-[60px] backdrop-blur-md bg-[#262626] top-[80px] right-[10px] md:right-[160px] lg:right-[160px] rounded-2xl flex flex-col justify-start  items-start pl-[20px] z-50 text-[white]"
-            // style={{ transition: ".4s" }}
-          >
-            {/* <div className="w-full mt-[15px] h-[30px] font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
-              Register
+      <div className="w-[100%] h-[80px] flex justify-center items-center bg-[#ffffffeb] fixed px-0 md:px-[13%]  backdrop-blur-md lg:px-[13%]  z-50 border-b border-[#c5c5c6] drop-shadow-sm">
+        <div className="w-full  rounded-full  h-[50px] flex justify-between items-center z-50 px-[13%] md:px-0 lg:px-0 ">
+          <div className="hidden md:flex lg:flex justify-start items-center h-full w-full">
+            {/* <Link to="/home"> */}
+            <div className="text-[25px] w-auto font-[mukta] font-bold flex justify-center items-center text-[black]">
+              {/* <img
+              src={logoUrl}
+              alt="Logo"
+              // style={{ width: "30px", height: "28px" }}
+              className="w-full object-cover"
+            /> */}
+              Logo
             </div>
-            <div className="w-full h-[30px] font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
-              Login
-            </div> */}
-            <div
-              className="w-full h-[30px] font-[poppins] mt-[15px] text-[14px] cursor-pointer flex justify-start items-center"
-              onClick={() => {
-                userSignOut();
-              }}
-            >
-              Logout
-            </div>
+            {/* </Link> */}
+            <Link to="/home">
+              {props.data === 4 ? (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[poppins] font-medium text-black">
+                  Home
+                </div>
+              ) : (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[poppins] font-medium text-[#a6a6a7]">
+                  Home
+                </div>
+              )}
+            </Link>
+            <Link to="/data">
+              {props.data === 1 ? (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-black">
+                  Dashboard
+                </div>
+              ) : (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#a6a6a7]">
+                  Dashboard
+                </div>
+              )}
+            </Link>
+            <Link to="/solutions">
+              {props.data === 2 ? (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[black]">
+                  Solution
+                </div>
+              ) : (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#a6a6a7]">
+                  Solution
+                </div>
+              )}
+            </Link>
+            <Link to="/documentation">
+              {props.data === 3 ? (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[black]">
+                  Documentation
+                </div>
+              ) : (
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#a6a6a7]">
+                  Documentation
+                </div>
+              )}
+            </Link>
           </div>
-        </>
-      ) : (
-        <>
-          <div
-            className="fixed w-[180px] h-[0] overflow-y-hidden backdrop-blur-md bg-[#262626] top-[80px] right-[10px] md:right-[160px] lg:right-[160px] rounded-2xl flex flex-col justify-start  items-start pl-[20px] z-50 text-[white]"
-            // style={{ transition: ".4s" }}
+          <div className="w-[50px] h-full flex md:hidden lg:hidden justify-start items-center">
+            {/* <div
+            className="w-[60px] h-[60px] flex justify-start items-center"
+            onClick={() => {
+              setToggle(true);
+            }}
           >
-            {/* <div className="w-full mt-[15px] min-h-[30px] overflow-y-hidden font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
-              Register
-            </div>
-            <div className="w-full min-h-[30px] overflow-y-hidden font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
-              Login
-            </div> */}
-            <div className="w-full mt-[15px] min-h-[30px] overflow-y-hidden font-[poppins] text-[14px] cursor-pointer flex justify-start items-center">
-              Logout
-            </div>
-          </div>
-        </>
-      )}
+            <IoReorderThree className="text-[40px] text-white" />
+          </div> */}
 
-      {/* {toggle === true ? (
+            {toggle === true ? (
+              <div
+                className="w-[50px] h-[50px] flex justify-start items-center"
+                onClick={() => {
+                  setToggle(false);
+                }}
+              >
+                <RxCross2 className="text-[30px] text-[black]" />
+              </div>
+            ) : (
+              <div
+                className="w-[60px] h-[60px] flex flex-col justify-center items-start"
+                onClick={() => {
+                  setToggle(true);
+                  setToggleProfile(false);
+                }}
+              >
+                <div className="w-[25px] h-[4px] bg-black my-[1.8px] rounded-full"></div>
+                <div className="w-[25px] h-[4px] bg-black my-[1.8px] rounded-full"></div>
+                <div className="w-[25px] h-[4px] bg-black my-[1.8px] rounded-full"></div>
+                {/* <IoReorderThree className="text-[40px] text-[black]" /> */}
+              </div>
+            )}
+          </div>
+          <div className="text-[25px] w-auto font-[mukta] font-bold flex md:hidden lg:hidden justify-center items-center text-[black]">
+            {/* <img
+              src={logoUrl}
+              alt="Logo"
+              // style={{ width: "30px", height: "28px" }}
+              className="w-full object-cover"
+            /> */}
+            Logo
+          </div>
+          <div
+            className="w-[40px] h-[40px] rounded-full bg-gradient-to-b from-[#8be962] to-[#6cd179] text-[black] text-[20px] font-[poppins] font-medium flex justify-center items-center cursor-pointer z-50"
+            onClick={() => {
+              setToggleProfile(!toggleProfile);
+              setToggle(false);
+            }}
+          >
+            H
+          </div>
+        </div>
+        {/* <div className="w-[90%]  min-h-[80px] pt-[10px] bg-[#1c1c28] flex justify-between items-center"></div> */}
+
+        {/* {toggle === true ? (
         <div
           className="fixed w-[250px] h-[100svh] bg-slate-500 left-0"
           style={{ transition: ".4s" }}
@@ -285,7 +276,8 @@ const Navbar = (props) => {
           </span>
         </div>
       )} */}
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -24,6 +24,7 @@ import AuthDetails from "./AuthDetails";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from "../firebase";
+import gi from "../Assets/img/gi.gif";
 
 const LandingPage = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -47,7 +48,12 @@ const LandingPage = () => {
         <>
           <Navbar data={4} />
 
-          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[#000000] px-[8%] md:px-[20%] lg:px-[20%]">
+          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[white] px-[13%] md:px-[13%] lg:px-[13%]">
+            {/* <img className="w-[50%] fixed border border-white" src={gi}></img> */}
+            {/* <img
+              className="w-[50%] border border-white"
+              src="https://i.pinimg.com/564x/44/ad/ee/44adee7c5a5b28c0507256e9805de982.jpg"
+            ></img> */}
             <Segment1 />
             <Segment2 />
             <Segment3 />

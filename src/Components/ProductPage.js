@@ -4,15 +4,15 @@ import product from "../Assets/img/product.jpeg";
 import ambulance from "../Assets/img/ambulance.jpeg";
 import productcart from "../Assets/img/productcart.jpeg";
 import tracking from "../Assets/img/tracking.jpeg";
-import one1 from "../Assets/img/1.png";
-import one2 from "../Assets/img/2.png";
-import one3 from "../Assets/img/3.png";
-import two1 from "../Assets/img/4.png";
-import two2 from "../Assets/img/5.png";
-import two3 from "../Assets/img/6.png";
-import three1 from "../Assets/img/10.png";
-import three2 from "../Assets/img/11.png";
-import three3 from "../Assets/img/12.png";
+import one1 from "../Assets/img/1.webp";
+import one2 from "../Assets/img/2.webp";
+import one3 from "../Assets/img/3.webp";
+import two1 from "../Assets/img/4.webp";
+import two2 from "../Assets/img/5.webp";
+import two3 from "../Assets/img/6.webp";
+import three1 from "../Assets/img/10.webp";
+import three2 from "../Assets/img/11.webp";
+import three3 from "../Assets/img/12.webp";
 import pr2 from "../Assets/img/pr2.png";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { FaAngleRightt } from "react-icons/fa6";
@@ -74,9 +74,10 @@ const ProductPage = (props) => {
       {authUser ? (
         <>
           <Navbar />
+          <div className="w-[100%] h-[80px]"></div>
           {modal === true ? (
             <div
-              className="w-[100%] h-[calc(100dvh)] flex justify-center top-0 items-center fixed  backdrop-blur-sm "
+              className="w-[100%] h-[calc(100svh-80px)] flex justify-center top-[80px] items-center fixed bg-[#c6c6c64b]  backdrop-blur-sm z-50"
               onClick={() => {
                 // setName(false);
                 // setModal(false);
@@ -95,13 +96,13 @@ const ProductPage = (props) => {
                 // className="w-full h-full"
               >
                 <div
-                  className="w-[300px] md:w-[390px] lg:w-[390px] rounded-2xl p-[40px] py-[20px] h-[70%] md:h-[90%] lg:h-[90%] bg-[#262626] z-50 flex flex-col text-white justify-center items-start font-[poppins]"
+                  className="w-[300px] md:w-[390px] lg:w-[390px] rounded-2xl p-[30px] py-[20px] h-[70%] md:h-[90%] lg:h-[90%] bg-[white] drop-shadow-md z-50 flex flex-col text-white justify-center items-start font-[poppins]"
                   onClick={() => {
                     // setName(false);
                     // setModal(true);
                   }}
                 >
-                  <span className="font-medium leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[poppins] text-[#f5f5f7] mb-[-4px] w-full  flex flex-wrap">
+                  <span className="leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[poppins] font-semibold text-[#000000] mb-[-4px] w-full  flex flex-wrap">
                     Avail One-Click SOS Service
                   </span>
                   <span className="font-thin leading-[1.2] text-[13px] md:text-[13px] lg:text-[13px] font-[poppins] mb-[20px] text-[#8d8d8d] mt-[10px] w-full  flex flex-wrap">
@@ -110,14 +111,14 @@ const ProductPage = (props) => {
                   <div className="w-full h-[60px] my-[1px] mt-[10px]  flex flex-col justify-start items-start">
                     {name === true && inName.length != 0 ? (
                       <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#262626] px-[4px]  z-50 text-[#47a3ff]"
+                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
                         style={{ transition: ".15s" }}
                       >
                         Name
                       </span>
                     ) : (
                       <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-50"
+                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
                         style={{ transition: ".15s" }}
                       >
                         {inName ? <></> : <>Name</>}
@@ -132,20 +133,20 @@ const ProductPage = (props) => {
                       // }}
                       value={inName}
                       onChange={(e) => setInName(e.target.value)}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#737373] text-[white] outline-none text-[14px]"
+                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
                     ></input>
                   </div>
                   <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                     {add === true && inAdd.length != 0 ? (
                       <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#262626] px-[4px]  z-50 text-[#47a3ff]"
+                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
                         style={{ transition: ".15s" }}
                       >
                         Address
                       </span>
                     ) : (
                       <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-50"
+                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
                         style={{ transition: ".15s" }}
                       >
                         {inAdd ? <></> : <>Address</>}
@@ -160,20 +161,20 @@ const ProductPage = (props) => {
                       // onBlur={() => {
                       //   setAdd(false);
                       // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#737373] text-[white] outline-none text-[14px]"
+                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
                     ></input>
                   </div>
                   <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                     {care === true && inCare.length != 0 ? (
                       <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#262626] px-[4px]  z-50 text-[#47a3ff]"
+                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
                         style={{ transition: ".15s" }}
                       >
                         Name of Caretaker
                       </span>
                     ) : (
                       <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-50"
+                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
                         style={{ transition: ".15s" }}
                       >
                         {inCare ? <></> : <>Name of Caretaker</>}
@@ -188,20 +189,20 @@ const ProductPage = (props) => {
                       // onBlur={() => {
                       //   setCare(false);
                       // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#737373] text-[white] outline-none text-[14px]"
+                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
                     ></input>
                   </div>
                   <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                     {id === true && inId.length != 0 ? (
                       <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#262626] px-[4px]  z-50 text-[#47a3ff]"
+                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
                         style={{ transition: ".15s" }}
                       >
                         Insurance Id
                       </span>
                     ) : (
                       <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-50"
+                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
                         style={{ transition: ".15s" }}
                       >
                         {inId ? <></> : <>Insurance Id</>}
@@ -216,20 +217,20 @@ const ProductPage = (props) => {
                       // onBlur={() => {
                       //   setId(false);
                       // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#737373] text-[white] outline-none text-[14px]"
+                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
                     ></input>
                   </div>
                   <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                     {com === true && inCom.length != 0 ? (
                       <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#262626] px-[4px]  z-50 text-[#47a3ff]"
+                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
                         style={{ transition: ".15s" }}
                       >
                         Company Name
                       </span>
                     ) : (
                       <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-50"
+                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
                         style={{ transition: ".15s" }}
                       >
                         {inCom ? <></> : <>Company Name</>}
@@ -244,13 +245,13 @@ const ProductPage = (props) => {
                       // onBlur={() => {
                       //   setCom(false);
                       // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#737373] text-[white] outline-none text-[14px]"
+                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
                     ></input>
                   </div>
 
                   <button
                     // placeholder="Last Name"
-                    className="w-full bg-[#0071e3] hover:bg-[#50cccc] h-[50px] rounded-xl my-[5px] font-[poppins] mt-[30px] px-[20px] text-[white] outline-none"
+                    className="w-full bg-gradient-to-b from-[#8be962] to-[#6cd179] h-[50px] rounded-xl my-[5px] font-[poppins] mt-[30px] px-[20px] text-[white] outline-none"
                     style={{ transition: ".2s" }}
                     onClick={() => {
                       setModal(false);
@@ -271,8 +272,8 @@ const ProductPage = (props) => {
           ) : (
             <></>
           )}
-          <div className="w-full h-[calc(100svh-80px)] bg-[#000000] flex flex-col md:flex-row lg:flex-row  justify-sart items-center p-[40px] pt-0  z-30">
-            <div className="w-full md:w-[50%] lg:w-[50%] h-[45%] md:h-full lg:h-full  flex flex-col justify-center items-center p-[6%]">
+          <div className="w-full h-[calc(100svh-80px)] bg-[#ffffff] flex flex-col md:flex-row lg:flex-row  justify-center items-center p-[13%] pt-0  z-30">
+            <div className="w-full md:w-[50%] lg:w-[50%] h-[50%] md:h-full lg:h-full  flex flex-col justify-center items-center p-[6%]">
               <div className="h-[calc(100%-10px)] w-full  flex justify-center items-center">
                 {colorMode === 2 ? (
                   <>
@@ -308,61 +309,118 @@ const ProductPage = (props) => {
               </div>
               <div className="w-full h-[3px] flex justify-center items-center">
                 {imageSLider === 1 ? (
-                  <div className="w-[20px] h-[5px] bg-[#0071e3] rounded-full mx-[3px] cursor-pointer"></div>
+                  <div className="w-[10px] h-[10px] bg-[#56bf64] rounded-full mx-[3px] cursor-pointer"></div>
                 ) : (
                   <div
-                    className="w-[20px] h-[5px] bg-slate-50 rounded-full mx-[3px] cursor-pointer"
+                    className="w-[10px] h-[10px] bg-[#d1d1d1] rounded-full mx-[3px] cursor-pointer"
                     onClick={() => {
                       setImageSlider(1);
                     }}
                   ></div>
                 )}
                 {imageSLider === 2 ? (
-                  <div className="w-[20px] h-[5px] bg-[#0071e3] rounded-full mx-[3px] cursor-pointer"></div>
+                  <div className="w-[10px] h-[10px] bg-[#56bf64] rounded-full mx-[3px] cursor-pointer"></div>
                 ) : (
                   <div
-                    className="w-[20px] h-[5px] bg-slate-50 rounded-full mx-[3px] cursor-pointer"
+                    className="w-[10px] h-[10px] bg-[#d1d1d1] rounded-full mx-[3px] cursor-pointer"
                     onClick={() => {
                       setImageSlider(2);
                     }}
                   ></div>
                 )}
                 {imageSLider === 3 ? (
-                  <div className="w-[20px] h-[5px] bg-[#0071e3] rounded-full mx-[3px] cursor-pointer"></div>
+                  <div className="w-[10px] h-[10px] bg-[#56bf64] rounded-full mx-[3px] cursor-pointer"></div>
                 ) : (
                   <div
-                    className="w-[20px] h-[5px] bg-slate-50 rounded-full mx-[3px] cursor-pointer"
+                    className="w-[10px] h-[10px] bg-[#d1d1d1] rounded-full mx-[3px] cursor-pointer"
                     onClick={() => {
                       setImageSlider(3);
                     }}
                   ></div>
                 )}
               </div>
-              {/* <div className="w-full fixed flex justify-start items-center left-[40px] ">
-                <div className=" w-[30px] h-[30px] flex justify-center itemc">
-                  <FaAngleLeft className="text-white text-[20px]" />
-                </div>
+              <div className="w-[50%] fixed flex justify-start items-center left-[13%] z-40">
+                {imageSLider === 1 ? (
+                  <div
+                    className=" w-[30px] h-[30px] flex justify-center items-center z-40 "
+                    onClick={() => {
+                      if (imageSLider > 1) {
+                        setImageSlider(imageSLider - 1);
+                        console.log("gsdvkuyvd");
+                      }
+                    }}
+                  >
+                    <FaAngleLeft className="text-[#aeaeae] text-[20px]" />
+                  </div>
+                ) : (
+                  <div
+                    className=" w-[30px] h-[30px] flex justify-center items-center z-40 "
+                    onClick={() => {
+                      if (imageSLider > 1) {
+                        setImageSlider(imageSLider - 1);
+                        console.log("gsdvkuyvd");
+                      }
+                    }}
+                  >
+                    <FaAngleLeft
+                      className="text-[black] text-[20px]"
+                      // onClick={() => {
+                      //   if (imageSLider < 3) {
+                      //     setImageSlider(imageSLider + 1);
+                      //   }
+                      // }}
+                    />
+                  </div>
+                )}
               </div>
-              <div className="w-full fixed flex justify-end  items-center right-[40px]">
-                <div className=" w-[30px] h-[30px] flex justify-center itemc">
-                  <FaAngleRight className="text-white text-[20px]" />
-                </div>
-              </div> */}
+              <div className="w-[50%] fixed flex justify-end  items-center right-[13%] z-40  ">
+                {imageSLider === 3 ? (
+                  <div
+                    className=" w-[30px] h-[30px] flex justify-center items-centere z-40 "
+                    onClick={() => {
+                      if (imageSLider < 3) {
+                        setImageSlider(imageSLider + 1);
+                      }
+                      // console.log("cleicljno");
+                    }}
+                  >
+                    <FaAngleRight className="text-[#aeaeae] text-[20px]" />
+                  </div>
+                ) : (
+                  <div
+                    className=" w-[30px] h-[30px] flex justify-center items-centere z-40"
+                    onClick={() => {
+                      if (imageSLider < 3) {
+                        setImageSlider(imageSLider + 1);
+                      }
+                    }}
+                  >
+                    <FaAngleRight
+                      className="text-[black] text-[20px]"
+                      // onClick={() => {
+                      //   if (imageSLider > 1) {
+                      //     setImageSlider(imageSLider - 1);
+                      //   }
+                      // }}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="w-full md:w-[50%] lg:w-[50%] h-[55%] md:h-full lg:h-full flex flex-col justify-between md:justify-center lg:justify-center items-center md:items-start lg:items-start">
+            <div className="w-full md:w-[50%] lg:w-[50%] h-[50%] md:h-full lg:h-full flex flex-col justify-between md:justify-center lg:justify-center items-center md:items-start lg:items-start">
               <div className="w-full">
-                <div className="font-bold leading-[1] text-[39px] md:text-[50px] lg:text-[50px] text-[#f5f5f7] mt-[10px] w-full flex justify-start">
+                <div className="font-bold font-[poppins] leading-[1] text-[39px] md:text-[50px] lg:text-[50px] text-[#000000] mt-[10px] w-full flex justify-start">
                   <span>Smart Band</span>
                 </div>
-                <div className="w-full font-[poppins] font-medium mt-[10px]">
-                  <span className="text-[23px] text-[#cbcbcb] ">
+                <div className="w-full font-[poppins] font-normal mt-[10px]">
+                  <span className="text-[23px] text-[#424242] ">
                     Rs. 1299 /-
                   </span>
                 </div>
                 <div className="w-full font-[poppins] flex items-center mt-[15px]">
                   {colorMode === 1 ? (
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
-                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#0071e3] flex justify-center items-center rounded-full ">
+                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#56bf64] flex justify-center items-center rounded-full ">
                         <div className="w-[30px] h-[30px] rounded-full bg-[#A95565] cursor-pointer "></div>
                       </div>
                     </div>
@@ -378,14 +436,14 @@ const ProductPage = (props) => {
                   )}
                   {colorMode === 2 ? (
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
-                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#0071e3] flex justify-center items-center rounded-full ">
-                        <div className="w-[30px] h-[30px] rounded-full bg-[white]  cursor-pointer "></div>
+                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#56bf64] flex justify-center items-center rounded-full ">
+                        <div className="w-[30px] h-[30px] rounded-full bg-[#d1d1d1]  cursor-pointer "></div>
                       </div>
                     </div>
                   ) : (
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
                       <div
-                        className="w-[27px] h-[27px] rounded-full bg-[white] cursor-pointer "
+                        className="w-[27px] h-[27px] rounded-full bg-[#d1d1d1] cursor-pointer "
                         onClick={() => {
                           setColorMode(2);
                         }}
@@ -394,14 +452,14 @@ const ProductPage = (props) => {
                   )}
                   {colorMode === 3 ? (
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
-                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#0071e3] flex justify-center items-center rounded-full ">
-                        <div className="w-[30px] h-[30px] rounded-full bg-[#535353]  cursor-pointer "></div>
+                      <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#56bf64] flex justify-center items-center rounded-full ">
+                        <div className="w-[30px] h-[30px] rounded-full bg-[#2c2c2c]  cursor-pointer "></div>
                       </div>
                     </div>
                   ) : (
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
                       <div
-                        className="w-[27px] h-[27px] rounded-full bg-[#535353]  cursor-pointer "
+                        className="w-[27px] h-[27px] rounded-full bg-[#2c2c2c]  cursor-pointer "
                         onClick={() => {
                           setColorMode(3);
                         }}
@@ -410,26 +468,34 @@ const ProductPage = (props) => {
                   )}
                 </div>
                 <div className="w-full font-[poppins] font-normal text-[13px] flex justify-start items-center mt-[15px] pr-[0px] md:pr-[50px] lg:pr-[50px] ">
-                  <span className="w-full md:w-[85%] lg:w-[85%]  text-[17px] md:text-[15px] lg:text-[15px] font-[poppins] text-[#6b6b6b] pr-[0px] md:pr-[50px] text-justify">
+                  <div className="w-full md:w-[85%] lg:w-[85%]  text-[15px] md:text-[15px] lg:text-[15px] font-[poppins] text-[#888888] pr-[0px] md:pr-[50px] text-justify">
                     It is a smart fitband used to{" "}
-                    <span className="text-[#00ff41]">track BPM</span> and
-                    Location of an old person and it sends notification
+                    <text className="text-[#56bf64] text-[15px] md:text-[15px] lg:text-[15px] font-[poppins] ">
+                      track BPM
+                    </text>{" "}
+                    and Location of an old person and it sends notification
                     according to it. It has an inbuilt{" "}
-                    <span className="text-[#00ff41]">SOS</span> System.
-                  </span>
+                    <text className="text-[#56bf64] text-[15px] md:text-[15px] lg:text-[15px] font-[poppins] ">
+                      SOS
+                    </text>{" "}
+                    System.
+                  </div>
                 </div>
               </div>
               <div
-                className="w-[100%]  md:w-[35%] lg:w-[35%] h-[50px] bg-[#0071e3] hover:bg-[#50cccc] mt-0 md:mt-[30px] lg:mt-[30px] cursor-pointer  rounded-xl flex justify-center items-center"
+                className="w-[100%]  md:w-[35%] lg:w-[35%] h-[50px] bg-gradient-to-b from-[#8be962] to-[#6cd179] mt-0 md:mt-[30px] lg:mt-[30px] cursor-pointer  rounded-xl flex justify-center items-center"
                 style={{ transition: ".2s" }}
                 onClick={() => {
                   setModal(true);
                 }}
               >
-                <span className="font-[poppins] font-medium text-[white]">
+                <div className="font-[poppins] font-medium text-[black]">
                   Buy Now
-                </span>
+                </div>
               </div>
+              {/* <button className="w-[300px] h-[50px] drop-shadow-md shadow-inner">
+                hello
+              </button> */}
             </div>
           </div>
         </>
