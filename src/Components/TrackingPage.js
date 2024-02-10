@@ -195,7 +195,6 @@ const TrackingPage = () => {
               <div className="px-[40px] text-[#6b6b6b] text-[14px] font-normal  md:text-[17px] lg:text-[17px] font-[poppins] flex justify-start items-center">
                 05-02-2024 <FaAngleDown className="ml-[5px] text-[#6b6b6b]" />
               </div>
-              {/* </div> */}
               <div className="w-full h-[38%] flex justify-start items-center mt-[30px]">
                 <Data />
               </div>

@@ -71,11 +71,11 @@
   width: 4px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0071e3;
+  background: #ffffff;
   border-radius: 100px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #ffffff;
   border-radius: 10px;
 }
 
@@ -109,5 +109,34 @@ img {
   to {
     opacity: 1;
     width: 100%;
+  }
+}
+
+.bell {
+  color: #e41c1b;
+  animation: shake 1000ms ease infinite;
+  font-size: 23px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  /* animation-delay: 200ms; */
+}
+
+@keyframes shake {
+  0% {
+    rotate: 0deg;
+  }
+  5% {
+    rotate: 12deg;
+  }
+  20%,
+  40% {
+    rotate: -25deg;
+  }
+  30%,
+  50% {
+    rotate: 25deg;
+  }
+  60% {
+    rotate: 0deg;
   }
 }

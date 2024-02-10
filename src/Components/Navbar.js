@@ -80,13 +80,13 @@ const Navbar = (props) => {
             </Link>
           )}
           {props.data === 1 ? (
-            <Link to="/data">
+            <Link to="/alert">
               <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center ">
                 Dashboard
               </div>
             </Link>
           ) : (
-            <Link to="/data">
+            <Link to="/alert">
               <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
                 Dashboard
               </div>
@@ -160,7 +160,7 @@ const Navbar = (props) => {
                 </div>
               )}
             </Link>
-            <Link to="/data">
+            <Link to="/alert">
               {props.data === 1 ? (
                 <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-black">
                   Dashboard

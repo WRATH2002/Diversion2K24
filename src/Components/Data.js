@@ -215,7 +215,7 @@ export const Data = () => {
   }
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <LineChart
+      {/* <LineChart
         width={500}
         height={300}
         data={dd}
@@ -227,16 +227,17 @@ export const Data = () => {
         <YAxis type="number" domain={[50, "dataMax + 20"]} />
         <Tooltip content={<CustomTooltip />} />
         <Legend />
-        <Line type="monotone" dataKey="Max" stroke="#ff7b00" />3b82f6
+        <Line type="monotone" dataKey="Max" stroke="#ff7b00" />
         <Line type="monotone" dataKey="Min" stroke="#72f63b" />
         <Line type="monotone" dataKey="Avg" stroke="#3b82f6" />
-      </LineChart>
-      {/* <AreaChart
-        width={730}
-        height={250}
-        data={salesData}
-        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-      >
+      </LineChart> */}
+
+      {/* <ResponsiveContainer width="100%" height="100%"> */}
+      {/* <LineChart width={300} height={100} data={dd}>
+        <Line type="monotone" dataKey="Avg" stroke="#8884d8" strokeWidth={2} />
+      </LineChart> */}
+      {/* </ResponsiveContainer> */}
+      <AreaChart width={730} height={250} data={dd}>
         <defs>
           <linearGradient id="colorMax" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
@@ -247,14 +248,14 @@ export const Data = () => {
             <stop offset="95%" stopColor="#72f63b" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#ff7b00" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#ff7b00" stopOpacity={0} />
+            <stop offset="25%" stopColor="#f5f4f5" stopOpacity={0.8} />
+            <stop offset="75%" stopColor="#f5f4f5" stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="name" />
-        <YAxis />
+        {/* <XAxis dataKey="name" /> */}
+        {/* <YAxis /> */}
         <Tooltip />
-        <Area
+        {/* <Area
           type="monotone"
           dataKey="Max"
           stroke="#3b82f6"
@@ -267,15 +268,15 @@ export const Data = () => {
           stroke="#72f63b"
           fillOpacity={1}
           fill="url(#colorMin)"
-        />
+        /> */}
         <Area
           type="monotone"
           dataKey="Avg"
-          stroke="#ff7b00"
+          stroke="#8d6c6e"
           fillOpacity={1}
           fill="url(#colorAvg)"
         />
-      </AreaChart>*/}
+      </AreaChart>
     </ResponsiveContainer>
     // <div>hello</div>
   );
@@ -286,7 +287,7 @@ export default Data;
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="p-4 bg-[#373748] flex flex-col gap-4 rounded-md">
+      <div className="p-4 bg-[#373748] border border-[#8d6c6e] rounded-xl flex flex-col gap-4 ">
         <p className="text-medium text-white text-lg">Hour : {label}</p>
         <p className="text-sm text-blue-400 font-[poppins]">
           Max:

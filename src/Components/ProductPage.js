@@ -25,6 +25,22 @@ import { auth, db } from "../firebase";
 import AuthDetails from "./AuthDetails";
 import OutsideClickHandler from "react-outside-click-handler";
 import firebase from "../firebase";
+
+import { FaArrowRightLong } from "react-icons/fa6";
+
+import { MdSpaceDashboard } from "react-icons/md";
+import { MdOutlineSpaceDashboard } from "react-icons/md";
+
+import { RiHome3Line } from "react-icons/ri";
+import { RiHome3Fill } from "react-icons/ri";
+
+import { HiOutlineBellAlert } from "react-icons/hi2";
+import { HiMiniBellAlert } from "react-icons/hi2";
+
+import { VscAccount } from "react-icons/vsc";
+import { Link } from "react-router-dom";
+import { onSnapshot } from "firebase/firestore";
+
 const ProductPage = (props) => {
   const [authUser, setAuthUser] = useState(null);
   const [modal, setModal] = useState(false);
@@ -43,8 +59,21 @@ const ProductPage = (props) => {
   const [imageSLider, setImageSlider] = useState(1);
 
   const [colorMode, setColorMode] = useState(1);
+  const [alertNotification, setAlertNotification] = useState(false);
   // const [inName, setInName] = useState("");
   // const [name, setName] = useState(false);
+  useEffect(() => {
+    fetchAlertNotification();
+  }, []);
+
+  function fetchAlertNotification() {
+    const user = firebase.auth().currentUser;
+    const alertRef = db.collection("USERS").doc(user.uid);
+
+    onSnapshot(alertRef, (snapshot) => {
+      setAlertNotification(snapshot.data().state);
+    });
+  }
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
@@ -73,17 +102,16 @@ const ProductPage = (props) => {
     <>
       {authUser ? (
         <>
-          <Navbar />
           <div className="w-[100%] h-[80px]"></div>
           {modal === true ? (
             <div
-              className="w-[100%] h-[calc(100svh-80px)] flex justify-center top-[80px] items-center fixed bg-[#c6c6c64b]  backdrop-blur-sm z-50"
+              className="w-[100%] h-[calc(100svh)] flex justify-center top-[0] items-center fixed bg-[white]  backdrop-blur-sm z-50"
               onClick={() => {
                 // setName(false);
                 // setModal(false);
               }}
             >
-              <OutsideClickHandler
+              {/* <OutsideClickHandler
                 onOutsideClick={() => {
                   setModal(false);
                   setInName("");
@@ -91,189 +119,198 @@ const ProductPage = (props) => {
                   setInCare("");
                   setInId("");
                   setInCom("");
-                  // alert("You clicked outside of this c omponent!!!");
                 }}
-                // className="w-full h-full"
+                className="w-full h-full"
+              > */}
+              <div
+                className="w-[90%] md:w-[390px] lg:w-[390px] rounded-2xl p-[30px] py-[50px] h-[80%] md:h-[90%] lg:h-[90%] bg-[white]  z-50 flex flex-col text-white justify-between items-start font-[poppins]"
+                onClick={() => {
+                  // setName(false);
+                  // setModal(true);
+                }}
               >
-                <div
-                  className="w-[300px] md:w-[390px] lg:w-[390px] rounded-2xl p-[30px] py-[20px] h-[70%] md:h-[90%] lg:h-[90%] bg-[white] drop-shadow-md z-50 flex flex-col text-white justify-center items-start font-[poppins]"
+                <span className="leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[poppins] font-semibold text-[#000000] mb-[-4px] w-full  flex flex-wrap">
+                  Avail One-Click SOS Service
+                </span>
+                <span className="font-thin leading-[1.2] text-[13px] md:text-[13px] lg:text-[13px] font-[poppins] mb-[20px] text-[#8d8d8d] mt-[10px] w-full  flex flex-wrap">
+                  *To avail this service, we need some informations
+                </span>
+                <div className="w-full h-[60px] my-[1px] mt-[10px]  flex flex-col justify-start items-start">
+                  {name === true && inName.length != 0 ? (
+                    <span
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      style={{ transition: ".15s" }}
+                    >
+                      Name
+                    </span>
+                  ) : (
+                    <span
+                      className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
+                      style={{ transition: ".15s" }}
+                    >
+                      {inName ? <></> : <>Name</>}
+                    </span>
+                  )}
+                  <input
+                    onFocus={() => {
+                      setName(true);
+                    }}
+                    // onBlur={() => {
+                    //   setName(false);
+                    // }}
+                    value={inName}
+                    onChange={(e) => setInName(e.target.value)}
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                  ></input>
+                </div>
+                <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
+                  {add === true && inAdd.length != 0 ? (
+                    <span
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      style={{ transition: ".15s" }}
+                    >
+                      Address
+                    </span>
+                  ) : (
+                    <span
+                      className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
+                      style={{ transition: ".15s" }}
+                    >
+                      {inAdd ? <></> : <>Address</>}
+                    </span>
+                  )}
+                  <input
+                    onFocus={() => {
+                      setAdd(true);
+                    }}
+                    value={inAdd}
+                    onChange={(e) => setInAdd(e.target.value)}
+                    // onBlur={() => {
+                    //   setAdd(false);
+                    // }}
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                  ></input>
+                </div>
+                <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
+                  {care === true && inCare.length != 0 ? (
+                    <span
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      style={{ transition: ".15s" }}
+                    >
+                      Name of Caretaker
+                    </span>
+                  ) : (
+                    <span
+                      className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
+                      style={{ transition: ".15s" }}
+                    >
+                      {inCare ? <></> : <>Name of Caretaker</>}
+                    </span>
+                  )}
+                  <input
+                    onFocus={() => {
+                      setCare(true);
+                    }}
+                    value={inCare}
+                    onChange={(e) => setInCare(e.target.value)}
+                    // onBlur={() => {
+                    //   setCare(false);
+                    // }}
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                  ></input>
+                </div>
+                <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
+                  {id === true && inId.length != 0 ? (
+                    <span
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      style={{ transition: ".15s" }}
+                    >
+                      Insurance Id
+                    </span>
+                  ) : (
+                    <span
+                      className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
+                      style={{ transition: ".15s" }}
+                    >
+                      {inId ? <></> : <>Insurance Id</>}
+                    </span>
+                  )}
+                  <input
+                    onFocus={() => {
+                      setId(true);
+                    }}
+                    value={inId}
+                    onChange={(e) => setInId(e.target.value)}
+                    // onBlur={() => {
+                    //   setId(false);
+                    // }}
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                  ></input>
+                </div>
+                <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
+                  {com === true && inCom.length != 0 ? (
+                    <span
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      style={{ transition: ".15s" }}
+                    >
+                      Company Name
+                    </span>
+                  ) : (
+                    <span
+                      className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
+                      style={{ transition: ".15s" }}
+                    >
+                      {inCom ? <></> : <>Company Name</>}
+                    </span>
+                  )}
+                  <input
+                    onFocus={() => {
+                      setCom(true);
+                    }}
+                    value={inCom}
+                    onChange={(e) => setInCom(e.target.value)}
+                    // onBlur={() => {
+                    //   setCom(false);
+                    // }}
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                  ></input>
+                </div>
+
+                <button
+                  // placeholder="Last Name"
+                  className="w-full bg-gradient-to-b from-[#8be962] to-[#6cd179] h-[50px] rounded-xl my-[5px] font-[poppins] mt-[30px] px-[20px] text-[white] outline-none"
+                  style={{ transition: ".2s" }}
                   onClick={() => {
-                    // setName(false);
-                    // setModal(true);
+                    setModal(false);
+                    setInName("");
+                    setInAdd("");
+                    setInCare("");
+                    setInId("");
+                    setInCom("");
+                    sendDataToFirestore();
                   }}
                 >
-                  <span className="leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[poppins] font-semibold text-[#000000] mb-[-4px] w-full  flex flex-wrap">
-                    Avail One-Click SOS Service
-                  </span>
-                  <span className="font-thin leading-[1.2] text-[13px] md:text-[13px] lg:text-[13px] font-[poppins] mb-[20px] text-[#8d8d8d] mt-[10px] w-full  flex flex-wrap">
-                    *To avail this service, we need some informations
-                  </span>
-                  <div className="w-full h-[60px] my-[1px] mt-[10px]  flex flex-col justify-start items-start">
-                    {name === true && inName.length != 0 ? (
-                      <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
-                        style={{ transition: ".15s" }}
-                      >
-                        Name
-                      </span>
-                    ) : (
-                      <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
-                        style={{ transition: ".15s" }}
-                      >
-                        {inName ? <></> : <>Name</>}
-                      </span>
-                    )}
-                    <input
-                      onFocus={() => {
-                        setName(true);
-                      }}
-                      // onBlur={() => {
-                      //   setName(false);
-                      // }}
-                      value={inName}
-                      onChange={(e) => setInName(e.target.value)}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
-                    ></input>
-                  </div>
-                  <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
-                    {add === true && inAdd.length != 0 ? (
-                      <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
-                        style={{ transition: ".15s" }}
-                      >
-                        Address
-                      </span>
-                    ) : (
-                      <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
-                        style={{ transition: ".15s" }}
-                      >
-                        {inAdd ? <></> : <>Address</>}
-                      </span>
-                    )}
-                    <input
-                      onFocus={() => {
-                        setAdd(true);
-                      }}
-                      value={inAdd}
-                      onChange={(e) => setInAdd(e.target.value)}
-                      // onBlur={() => {
-                      //   setAdd(false);
-                      // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
-                    ></input>
-                  </div>
-                  <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
-                    {care === true && inCare.length != 0 ? (
-                      <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
-                        style={{ transition: ".15s" }}
-                      >
-                        Name of Caretaker
-                      </span>
-                    ) : (
-                      <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
-                        style={{ transition: ".15s" }}
-                      >
-                        {inCare ? <></> : <>Name of Caretaker</>}
-                      </span>
-                    )}
-                    <input
-                      onFocus={() => {
-                        setCare(true);
-                      }}
-                      value={inCare}
-                      onChange={(e) => setInCare(e.target.value)}
-                      // onBlur={() => {
-                      //   setCare(false);
-                      // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
-                    ></input>
-                  </div>
-                  <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
-                    {id === true && inId.length != 0 ? (
-                      <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
-                        style={{ transition: ".15s" }}
-                      >
-                        Insurance Id
-                      </span>
-                    ) : (
-                      <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
-                        style={{ transition: ".15s" }}
-                      >
-                        {inId ? <></> : <>Insurance Id</>}
-                      </span>
-                    )}
-                    <input
-                      onFocus={() => {
-                        setId(true);
-                      }}
-                      value={inId}
-                      onChange={(e) => setInId(e.target.value)}
-                      // onBlur={() => {
-                      //   setId(false);
-                      // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
-                    ></input>
-                  </div>
-                  <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
-                    {com === true && inCom.length != 0 ? (
-                      <span
-                        className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
-                        style={{ transition: ".15s" }}
-                      >
-                        Company Name
-                      </span>
-                    ) : (
-                      <span
-                        className="ml-[20px] h-[18px] text-[14px] mt-[19px] px-[0] fixed text-[#979797]  z-30"
-                        style={{ transition: ".15s" }}
-                      >
-                        {inCom ? <></> : <>Company Name</>}
-                      </span>
-                    )}
-                    <input
-                      onFocus={() => {
-                        setCom(true);
-                      }}
-                      value={inCom}
-                      onChange={(e) => setInCom(e.target.value)}
-                      // onBlur={() => {
-                      //   setCom(false);
-                      // }}
-                      className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
-                    ></input>
-                  </div>
-
-                  <button
-                    // placeholder="Last Name"
-                    className="w-full bg-gradient-to-b from-[#8be962] to-[#6cd179] h-[50px] rounded-xl my-[5px] font-[poppins] mt-[30px] px-[20px] text-[white] outline-none"
-                    style={{ transition: ".2s" }}
-                    onClick={() => {
-                      setModal(false);
-                      setInName("");
-                      setInAdd("");
-                      setInCare("");
-                      setInId("");
-                      setInCom("");
-                      sendDataToFirestore();
-                    }}
-                  >
-                    Submit
-                  </button>
-                  {/* </div> */}
-                </div>
-              </OutsideClickHandler>
+                  Submit
+                </button>
+                <button
+                  // placeholder="Last Name"
+                  className="w-full bg-[#adadad] h-[50px] rounded-xl mt-[5px] font-[poppins] px-[20px] text-[white] outline-none"
+                  style={{ transition: ".2s" }}
+                  onClick={() => {
+                    setModal(false);
+                  }}
+                >
+                  Cancel
+                </button>
+                {/* </div> */}
+              </div>
+              {/* </OutsideClickHandler> */}
             </div>
           ) : (
             <></>
           )}
-          <div className="w-full h-[calc(100svh-80px)] bg-[#ffffff] flex flex-col md:flex-row lg:flex-row  justify-center items-center p-[13%] pt-0  z-30">
-            <div className="w-full md:w-[50%] lg:w-[50%] h-[50%] md:h-full lg:h-full  flex flex-col justify-center items-center p-[6%]">
+          <div className="w-full h-[calc(100svh-70px)] bg-[#ffffff] fixed top-0 flex flex-col md:flex-row lg:flex-row  justify-between  items-center px-[13%] pt-0  z-30">
+            <div className="w-full md:w-[50%] lg:w-[50%] h-[50%]  md:h-full lg:h-full  flex flex-col justify-center items-center p-[6%]">
               <div className="h-[calc(100%-10px)] w-full  flex justify-center items-center">
                 {colorMode === 2 ? (
                   <>
@@ -407,7 +444,7 @@ const ProductPage = (props) => {
                 )}
               </div>
             </div>
-            <div className="w-full md:w-[50%] lg:w-[50%] h-[50%] md:h-full lg:h-full flex flex-col justify-between md:justify-center lg:justify-center items-center md:items-start lg:items-start">
+            <div className="w-full md:w-[50%] lg:w-[50%] h-[50%]  md:h-full lg:h-full flex flex-col justify-between md:justify-center lg:justify-center items-center md:items-start lg:items-start pb-[20px]">
               <div className="w-full">
                 <div className="font-bold font-[poppins] leading-[1] text-[39px] md:text-[50px] lg:text-[50px] text-[#000000] mt-[10px] w-full flex justify-start">
                   <span>Smart Band</span>
@@ -483,7 +520,7 @@ const ProductPage = (props) => {
                 </div>
               </div>
               <div
-                className="w-[100%]  md:w-[35%] lg:w-[35%] h-[50px] bg-gradient-to-b from-[#8be962] to-[#6cd179] mt-0 md:mt-[30px] lg:mt-[30px] cursor-pointer  rounded-xl flex justify-center items-center"
+                className="w-[100%]  md:w-[35%] lg:w-[35%] h-[60px] bg-gradient-to-b from-[#8be962] to-[#6cd179] mt-0 md:mt-[30px] lg:mt-[30px] cursor-pointer  rounded-xl flex justify-center items-center"
                 style={{ transition: ".2s" }}
                 onClick={() => {
                   setModal(true);
@@ -496,6 +533,57 @@ const ProductPage = (props) => {
               {/* <button className="w-[300px] h-[50px] drop-shadow-md shadow-inner">
                 hello
               </button> */}
+            </div>
+          </div>
+          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px] bg-[#ffffffe0] backdrop-blur-xl">
+            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+              <Link
+                to="/"
+                className="w-full h-full flex justify-center items-center flex-col"
+              >
+                <RiHome3Fill className="text-[23px] my-[2px]" />
+                Home
+              </Link>
+            </div>
+
+            {alertNotification === false ? (
+              <>
+                <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+                  <Link
+                    to="/alert"
+                    className="w-full h-full flex justify-center items-center flex-col"
+                  >
+                    <HiOutlineBellAlert className="text-[23px] my-[2px]" />
+                    Alerts
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="w-[30%] h-[50px] flex flex-col text-[#e41c1b] justify-center items-center ">
+                  <Link
+                    to="/alert"
+                    className="w-full h-full flex justify-center items-center flex-col"
+                  >
+                    <HiMiniBellAlert className="bell text-[23px] my-[2px]" />
+                    Alerts
+                  </Link>
+                </div>
+              </>
+            )}
+
+            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+              <Link
+                to="/dashboard"
+                className="w-full h-full flex justify-center items-center flex-col"
+              >
+                <MdOutlineSpaceDashboard className="text-[23px] my-[2px]" />
+                Dashboard
+              </Link>
+            </div>
+            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+              <VscAccount className="text-[23px] my-[2px]" />
+              Account
             </div>
           </div>
         </>

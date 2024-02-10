@@ -12,7 +12,7 @@ import three3 from "../Assets/img/12.png";
 
 const Segment1 = () => {
   return (
-    <div className="w-full backdrop-blur-sm  h-[calc(100svh+70px)] flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end  ">
+    <div className="w-full backdrop-blur-sm  h-[calc(100svh-70px)] flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end  ">
       <div className="w-full  md:w-[50%] lg:w-[50%]  h-full flex justify-center items-center  text-[white] font-[poppins] pr-[0] md:pr-[20px] lg:pr-[20px] ">
         <div className="w-full h-full flex flex-col items-center justify-center ">
           <span className="leading-[1] text-[22px] md:text-[26px] lg:text-[26px] text-[#454545]  font-[poppins] w-full">
