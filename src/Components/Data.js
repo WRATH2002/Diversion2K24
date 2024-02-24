@@ -214,8 +214,9 @@ export const Data = () => {
     // console.log(user);
   }
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      {/* <LineChart
+    <div className="w-full h-full">
+      <ResponsiveContainer width="100%" height="100%">
+        {/* <LineChart
         width={500}
         height={300}
         data={dd}
@@ -232,30 +233,30 @@ export const Data = () => {
         <Line type="monotone" dataKey="Avg" stroke="#3b82f6" />
       </LineChart> */}
 
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
-      {/* <LineChart width={300} height={100} data={dd}>
+        {/* <ResponsiveContainer width="100%" height="100%"> */}
+        {/* <LineChart width={300} height={100} data={dd}>
         <Line type="monotone" dataKey="Avg" stroke="#8884d8" strokeWidth={2} />
       </LineChart> */}
-      {/* </ResponsiveContainer> */}
-      <AreaChart width={730} height={250} data={dd}>
-        <defs>
-          <linearGradient id="colorMax" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
-          </linearGradient>
-          <linearGradient id="colorMin" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#72f63b" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#72f63b" stopOpacity={0} />
-          </linearGradient>
-          <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="25%" stopColor="#f5f4f5" stopOpacity={0.8} />
-            <stop offset="75%" stopColor="#f5f4f5" stopOpacity={0} />
-          </linearGradient>
-        </defs>
-        {/* <XAxis dataKey="name" /> */}
-        {/* <YAxis /> */}
-        <Tooltip />
-        {/* <Area
+        {/* </ResponsiveContainer> */}
+        <AreaChart width={730} height={250} data={dd}>
+          <defs>
+            <linearGradient id="colorMax" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorMin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#72f63b" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#72f63b" stopOpacity={0} />
+            </linearGradient>
+            <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="15%" stopColor="#90e0ef" stopOpacity={0.8} />
+              <stop offset="100%" stopColor="#90e0ef" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          {/* <XAxis dataKey="name" /> */}
+          {/* <YAxis /> */}
+          <Tooltip />
+          {/* <Area
           type="monotone"
           dataKey="Max"
           stroke="#3b82f6"
@@ -269,15 +270,16 @@ export const Data = () => {
           fillOpacity={1}
           fill="url(#colorMin)"
         /> */}
-        <Area
-          type="monotone"
-          dataKey="Avg"
-          stroke="#8d6c6e"
-          fillOpacity={1}
-          fill="url(#colorAvg)"
-        />
-      </AreaChart>
-    </ResponsiveContainer>
+          <Area
+            type="monotone"
+            dataKey="Avg"
+            stroke="#0077b6"
+            fillOpacity={1}
+            fill="url(#colorAvg)"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
     // <div>hello</div>
   );
 };
@@ -289,15 +291,15 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="p-4 bg-[#373748] border border-[#8d6c6e] rounded-xl flex flex-col gap-4 ">
         <p className="text-medium text-white text-lg">Hour : {label}</p>
-        <p className="text-sm text-blue-400 font-[poppins]">
+        <p className="text-sm text-blue-400 font-[google]">
           Max:
           <span className="ml-2">{payload[0].value} bpm</span>
         </p>
-        <p className="text-sm text-[#72f63b] font-[poppins]">
+        <p className="text-sm text-[#72f63b] font-[google]">
           Min:
           <span className="ml-2">{payload[1].value} bpm</span>
         </p>
-        <p className="text-sm text-[#ff7b00] font-[poppins]">
+        <p className="text-sm text-[#ff7b00] font-[google]">
           Avg:
           <span className="ml-2">{payload[2].value} bpm</span>
         </p>

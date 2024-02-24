@@ -27,7 +27,7 @@ const Navbar = (props) => {
       {toggleProfile === true ? (
         <>
           <div
-            className="fixed w-auto h-[60px] rounded-xl  bg-[#ffffffeb] backdrop-blur-md drop-shadow-md  top-[80px] right-[13%] flex flex-col justify-start  items-start px-[20px] z-50 text-[black]"
+            className="fixed w-auto h-[60px] rounded-xl  bg-transparent backdrop-blur-md drop-shadow-md  top-[80px] right-[13%] flex flex-col justify-start  items-start px-[20px] z-50 text-[black]"
             // style={{ transition: ".4s" }}
           >
             {/* <div className="w-full mt-[15px] h-[30px] font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
@@ -37,7 +37,7 @@ const Navbar = (props) => {
               Login
             </div> */}
             <div
-              className="w-full h-[30px] font-[poppins] mt-[15px] text-[14px] cursor-pointer flex justify-start items-center"
+              className="w-full h-[30px] font-[google] mt-[15px] text-[14px] cursor-pointer flex justify-start items-center"
               onClick={() => {
                 userSignOut();
               }}
@@ -58,7 +58,7 @@ const Navbar = (props) => {
             <div className="w-full min-h-[30px] overflow-y-hidden font-[lato] text-[16px] cursor-pointer flex justify-start items-center">
               Login
             </div> */}
-            <div className="w-full mt-[15px] min-h-[30px] overflow-y-hidden font-[poppins] text-[14px] cursor-pointer flex justify-start items-center">
+            <div className="w-full mt-[15px] min-h-[30px] overflow-y-hidden font-[google] text-[14px] cursor-pointer flex justify-start items-center">
               Logout
             </div>
           </div>
@@ -68,65 +68,65 @@ const Navbar = (props) => {
         <div className="w-[100%]  bg-[#fffffff6] h-[150px] fixed top-[80px]  flex backdrop-blur-md drop-shadow-md flex-col justify-start text-black  z-50 items-start pl-[13%]">
           {props.data === 4 ? (
             <Link to="/home">
-              <div className="w-full mt-[15px] h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center ">
+              <div className="w-full mt-[15px] h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center ">
                 Home
               </div>
             </Link>
           ) : (
             <Link to="/home">
-              <div className="w-full mt-[15px] h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
+              <div className="w-full mt-[15px] h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
                 Home
               </div>
             </Link>
           )}
           {props.data === 1 ? (
             <Link to="/alert">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center ">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center ">
                 Dashboard
               </div>
             </Link>
           ) : (
             <Link to="/alert">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
                 Dashboard
               </div>
             </Link>
           )}
           {props.data === 2 ? (
             <Link to="/solutions">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center ">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center ">
                 Solution
               </div>
             </Link>
           ) : (
             <Link to="/solutions">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
                 Solution
               </div>
             </Link>
           )}
           {props.data === 3 ? (
             <Link to="/documentation">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center ">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center ">
                 Document
               </div>
             </Link>
           ) : (
             <Link to="/documentation">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
                 Document
               </div>
             </Link>
           )}
           {/* {props.data === 3 ? (
             <Link to="/product">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center ">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center ">
                 Product
               </div>
             </Link>
           ) : (
             <Link to="/documentation">
-              <div className="w-full h-[30px] font-[poppins] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
+              <div className="w-full h-[30px] font-[google] text-[14px] cursor-pointer flex justify-start items-center text-[#979797]">
                 Product
               </div>
             </Link>
@@ -135,7 +135,7 @@ const Navbar = (props) => {
       ) : (
         <div></div>
       )}
-      <div className="w-[100%] h-[80px] flex justify-center items-center bg-[#ffffffeb] fixed px-0 md:px-[13%]  backdrop-blur-md lg:px-[13%]  z-50 border-b border-[#c5c5c6] drop-shadow-sm">
+      <div className="w-[100%] h-[80px] flex justify-center items-center bg-transparent fixed px-0 md:px-[13%]  backdrop-blur-md lg:px-[13%]  z-50 border-b border-[#c5c5c6] drop-shadow-sm">
         <div className="w-full  rounded-full  h-[50px] flex justify-between items-center z-50 px-[13%] md:px-0 lg:px-0 ">
           <div className="hidden md:flex lg:flex justify-start items-center h-full w-full">
             {/* <Link to="/home"> */}
@@ -151,44 +151,44 @@ const Navbar = (props) => {
             {/* </Link> */}
             <Link to="/home">
               {props.data === 4 ? (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[poppins] font-medium text-black">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[google] font-medium text-black">
                   Home
                 </div>
               ) : (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[poppins] font-medium text-[#a6a6a7]">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[90px] font-[google] font-medium text-[#a6a6a7]">
                   Home
                 </div>
               )}
             </Link>
             <Link to="/alert">
               {props.data === 1 ? (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-black">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[google] font-medium text-black">
                   Dashboard
                 </div>
               ) : (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#a6a6a7]">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[google] font-medium text-[#a6a6a7]">
                   Dashboard
                 </div>
               )}
             </Link>
             <Link to="/solutions">
               {props.data === 2 ? (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[black]">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[google] font-medium text-[black]">
                   Solution
                 </div>
               ) : (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#a6a6a7]">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[google] font-medium text-[#a6a6a7]">
                   Solution
                 </div>
               )}
             </Link>
             <Link to="/documentation">
               {props.data === 3 ? (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[black]">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[google] font-medium text-[black]">
                   Documentation
                 </div>
               ) : (
-                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[poppins] font-medium text-[#a6a6a7]">
+                <div className="text-[14px] cursor-pointer flex justify-center items-center ml-[40px] font-[google] font-medium text-[#a6a6a7]">
                   Documentation
                 </div>
               )}
@@ -238,7 +238,7 @@ const Navbar = (props) => {
             Logo
           </div>
           <div
-            className="w-[40px] h-[40px] rounded-full bg-gradient-to-b from-[#8be962] to-[#6cd179] text-[black] text-[20px] font-[poppins] font-medium flex justify-center items-center cursor-pointer z-50"
+            className="w-[40px] h-[40px] rounded-full bg-gradient-to-b from-[#8be962] to-[#6cd179] text-[black] text-[20px] font-[google] font-medium flex justify-center items-center cursor-pointer z-50"
             onClick={() => {
               setToggleProfile(!toggleProfile);
               setToggle(false);

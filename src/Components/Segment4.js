@@ -12,22 +12,22 @@ import three3 from "../Assets/img/12.png";
 
 const Segment4 = () => {
   return (
-    <div className="w-full bg-[] backdrop-blur-sm     h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]  rounded-3xl flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end  ">
+    <div className="w-full bg-[]    h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]  rounded-3xl flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end  ">
       <div className="h-full w-[50%]  p-[20px] hidden md:flex lg:flex justify-center items-center rounded-lg">
         <img className="w-full rounded-lg " src={one2}></img>
       </div>
-      <div className="w-full  md:w-[50%] lg:w-[50%] h-full flex justify-center items-center  text-[white] font-[poppins] pl-[0] md:pl-[20px] lg:pl-[20px] ">
+      <div className="w-full  md:w-[50%] lg:w-[50%] h-full flex justify-center items-center  text-[white] font-[google] pl-[0] md:pl-[20px] lg:pl-[20px] ">
         <div className="w-full h-full flex flex-col items-center justify-center ">
           <div className="w-[100%] h-full flex flex-col items-center justify-center ">
-            <span className="leading-[1] text-[22px] md:text-[26px] lg:text-[26px] text-[#454545]  font-[poppins] w-full">
+            <span className="leading-[1] text-[27px] md:text-[26px] lg:text-[26px] text-[#dcdcdc]  font-[google] w-full">
               Buy Product
             </span>
-            <span className="font-bold leading-[1] text-[48px] md:text-[55px] lg:text-[55px] text-[#000000] font-[poppins] mt-[15px] w-full flex justify-start">
+            <span className="font-bold leading-[1] text-[55px] md:text-[55px] lg:text-[55px] text-[#ffffff] font-[google] mt-[15px] w-full flex justify-start">
               Your device is not connected
             </span>
-            <span className="leading-normal font-normal text-[15px] md:text-[15px] lg:text-[15px] mt-[40px] font-[poppins] text-[#888888] w-full overflow-hidden text-ellipsis text-justify">
+            <span className="leading-normal font-normal text-[18px] md:text-[15px] lg:text-[15px] mt-[40px] font-[google] text-[#c7c7c7] w-full overflow-hidden text-ellipsis text-justify">
               Purchase this
-              <span className="text-[#56bf64] font-['poppins']">
+              <span className="text-[#56bf64] font-['google']">
                 {" "}
                 Made in India
               </span>{" "}
@@ -35,7 +35,7 @@ const Segment4 = () => {
             </span>
             <div className="w-full   flex justify-end items-center mt-[20px]">
               <Link to="/product">
-                <div className="w-[60px] h-[37px] rounded-full font-[poppins] font-medium text-[14px] flex justify-center items-center bg-gradient-to-b from-[#8be962] to-[#6cd179] text-black cursor-pointer bt">
+                <div className="w-[60px] h-[37px] rounded-full font-[google] font-medium text-[14px] flex justify-center items-center bg-gradient-to-b from-[#8be962] to-[#6cd179] text-[black] cursor-pointer bt">
                   Buy
                 </div>
               </Link>

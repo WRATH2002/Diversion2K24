@@ -67,8 +67,12 @@
   font-family: poppins;
   src: url(./Assets/font/Poppins-Regular.ttf);
 }
+@font-face {
+  font-family: google;
+  src: url(./Assets/font/Product\ Sans\ Regular.ttf);
+}
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 0px;
 }
 ::-webkit-scrollbar-thumb {
   background: #ffffff;
@@ -113,7 +117,7 @@ img {
 }
 
 .bell {
-  color: #e41c1b;
+  color: #ffa947;
   animation: shake 1000ms ease infinite;
   font-size: 23px;
   margin-top: 2px;

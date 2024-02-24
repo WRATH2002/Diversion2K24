@@ -83,18 +83,29 @@ const LandingPage = () => {
     <>
       {account === true ? (
         <>
-          <div className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#f4f0ef] rounded-xl w-[100px] h-[50px] z-50">
-            Log Out
+          <div className="w-[150px] h-[120px] rounded-xl bg-[white] fixed bottom-[80px] z-50 right-[20px]">
+            <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Log Out
+            </div>
+            <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Documentation
+            </div>
+            <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Solution
+            </div>
           </div>
         </>
       ) : (
         <></>
       )}
-      {authUser ? (
+      {true ? (
         <>
           {/* <Navbar data={4} /> */}
-
-          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[white] px-[13%] md:px-[13%] lg:px-[13%]">
+          <div className="w-full h-[100svh] fixed bg-[black] flex justify-start items-start">
+            <div className="w-[500px] h-[500px] fixed left-[-200px] top-[-200px] bg-[#5fcff5] rounded-full"></div>
+            <div className="w-[300px] h-[300px] fixed bottom-[110px] right-[-110px] bg-[#976cf7] rounded-full"></div>
+          </div>
+          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[#0000007b] px-[13%] md:px-[13%] lg:px-[13%] backdrop-blur-3xl">
             {/* <img className="w-[50%] fixed border border-white" src={gi}></img> */}
             {/* <img
               className="w-[50%] border border-white"
@@ -104,14 +115,19 @@ const LandingPage = () => {
             <Segment2 />
             <Segment3 />
             <Segment4 />
+            {/* <div className="w-full h-[100svh] fixed bg-[black] mt-[-13%] flex justify-start items-start">
+              <div className="w-[200px] h-[200px] bg-[orange] rounded-full">
+                zdfb
+              </div>
+            </div> */}
           </div>
-          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px] bg-[#ffffffe0] backdrop-blur-xl">
+          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px]  text-[white]">
             <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
               <Link
                 to="/"
                 className="w-full h-full flex justify-center items-center flex-col"
               >
-                <RiHome3Fill className="text-[23px] my-[2px]" />
+                <RiHome3Fill className="text-[23px] my-[2px] text-[white]" />
                 Home
               </Link>
             </div>
@@ -150,7 +166,7 @@ const LandingPage = () => {
               </Link>
             </div>
             <div
-              className="w-[30%] h-[50px] flex flex-col justify-center items-center "
+              className="w-[30%] h-[50px] flex flex-col justify-center items-center  backdrop-blur-3xl"
               onClick={() => {
                 setAccount(!account);
               }}

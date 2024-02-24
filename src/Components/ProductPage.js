@@ -60,6 +60,7 @@ const ProductPage = (props) => {
 
   const [colorMode, setColorMode] = useState(1);
   const [alertNotification, setAlertNotification] = useState(false);
+  const [account, setAccount] = useState(false);
   // const [inName, setInName] = useState("");
   // const [name, setName] = useState(false);
   useEffect(() => {
@@ -100,6 +101,15 @@ const ProductPage = (props) => {
   }
   return (
     <>
+      {account === true ? (
+        <>
+          <div className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50">
+            Log Out
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
       {authUser ? (
         <>
           <div className="w-[100%] h-[80px]"></div>
@@ -123,16 +133,16 @@ const ProductPage = (props) => {
                 className="w-full h-full"
               > */}
               <div
-                className="w-[90%] md:w-[390px] lg:w-[390px] rounded-2xl p-[30px] py-[50px] h-[80%] md:h-[90%] lg:h-[90%] bg-[white]  z-50 flex flex-col text-white justify-between items-start font-[poppins]"
+                className="w-[90%] md:w-[390px] lg:w-[390px] rounded-2xl p-[30px] py-[50px] h-[80%] md:h-[90%] lg:h-[90%] bg-[white]  z-50 flex flex-col text-white justify-between items-start font-[google]"
                 onClick={() => {
                   // setName(false);
                   // setModal(true);
                 }}
               >
-                <span className="leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[poppins] font-semibold text-[#000000] mb-[-4px] w-full  flex flex-wrap">
+                <span className="leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[google] font-semibold text-[#000000] mb-[-4px] w-full  flex flex-wrap">
                   Avail One-Click SOS Service
                 </span>
-                <span className="font-thin leading-[1.2] text-[13px] md:text-[13px] lg:text-[13px] font-[poppins] mb-[20px] text-[#8d8d8d] mt-[10px] w-full  flex flex-wrap">
+                <span className="font-thin leading-[1.2] text-[13px] md:text-[13px] lg:text-[13px] font-[google] mb-[20px] text-[#8d8d8d] mt-[10px] w-full  flex flex-wrap">
                   *To avail this service, we need some informations
                 </span>
                 <div className="w-full h-[60px] my-[1px] mt-[10px]  flex flex-col justify-start items-start">
@@ -278,7 +288,7 @@ const ProductPage = (props) => {
 
                 <button
                   // placeholder="Last Name"
-                  className="w-full bg-gradient-to-b from-[#8be962] to-[#6cd179] h-[50px] rounded-xl my-[5px] font-[poppins] mt-[30px] px-[20px] text-[white] outline-none"
+                  className="w-full bg-gradient-to-b from-[#8be962] to-[#6cd179] h-[50px] rounded-xl my-[5px] font-[google] mt-[30px] px-[20px] text-[white] outline-none"
                   style={{ transition: ".2s" }}
                   onClick={() => {
                     setModal(false);
@@ -294,7 +304,7 @@ const ProductPage = (props) => {
                 </button>
                 <button
                   // placeholder="Last Name"
-                  className="w-full bg-[#adadad] h-[50px] rounded-xl mt-[5px] font-[poppins] px-[20px] text-[white] outline-none"
+                  className="w-full bg-[#adadad] h-[50px] rounded-xl mt-[5px] font-[google] px-[20px] text-[white] outline-none"
                   style={{ transition: ".2s" }}
                   onClick={() => {
                     setModal(false);
@@ -446,15 +456,15 @@ const ProductPage = (props) => {
             </div>
             <div className="w-full md:w-[50%] lg:w-[50%] h-[50%]  md:h-full lg:h-full flex flex-col justify-between md:justify-center lg:justify-center items-center md:items-start lg:items-start pb-[20px]">
               <div className="w-full">
-                <div className="font-bold font-[poppins] leading-[1] text-[39px] md:text-[50px] lg:text-[50px] text-[#000000] mt-[10px] w-full flex justify-start">
+                <div className="font-bold font-[google] leading-[1] text-[39px] md:text-[50px] lg:text-[50px] text-[#000000] mt-[10px] w-full flex justify-start">
                   <span>Smart Band</span>
                 </div>
-                <div className="w-full font-[poppins] font-normal mt-[10px]">
+                <div className="w-full font-[google] font-normal mt-[10px]">
                   <span className="text-[23px] text-[#424242] ">
                     Rs. 1299 /-
                   </span>
                 </div>
-                <div className="w-full font-[poppins] flex items-center mt-[15px]">
+                <div className="w-full font-[google] flex items-center mt-[15px]">
                   {colorMode === 1 ? (
                     <div className="h-[40px] w-[40px] flex justify-center items-center">
                       <div className="w-[37px] h-[37px] p-[2px] border-[2px] border-[#56bf64] flex justify-center items-center rounded-full ">
@@ -504,15 +514,15 @@ const ProductPage = (props) => {
                     </div>
                   )}
                 </div>
-                <div className="w-full font-[poppins] font-normal text-[13px] flex justify-start items-center mt-[15px] pr-[0px] md:pr-[50px] lg:pr-[50px] ">
-                  <div className="w-full md:w-[85%] lg:w-[85%]  text-[15px] md:text-[15px] lg:text-[15px] font-[poppins] text-[#888888] pr-[0px] md:pr-[50px] text-justify">
+                <div className="w-full font-[google] font-normal text-[13px] flex justify-start items-center mt-[15px] pr-[0px] md:pr-[50px] lg:pr-[50px] ">
+                  <div className="w-full md:w-[85%] lg:w-[85%]  text-[15px] md:text-[15px] lg:text-[15px] font-[google] text-[#888888] pr-[0px] md:pr-[50px] text-justify">
                     It is a smart fitband used to{" "}
-                    <text className="text-[#56bf64] text-[15px] md:text-[15px] lg:text-[15px] font-[poppins] ">
+                    <text className="text-[#56bf64] text-[15px] md:text-[15px] lg:text-[15px] font-[google] ">
                       track BPM
                     </text>{" "}
                     and Location of an old person and it sends notification
                     according to it. It has an inbuilt{" "}
-                    <text className="text-[#56bf64] text-[15px] md:text-[15px] lg:text-[15px] font-[poppins] ">
+                    <text className="text-[#56bf64] text-[15px] md:text-[15px] lg:text-[15px] font-[google] ">
                       SOS
                     </text>{" "}
                     System.
@@ -526,7 +536,7 @@ const ProductPage = (props) => {
                   setModal(true);
                 }}
               >
-                <div className="font-[poppins] font-medium text-[black]">
+                <div className="font-[google] font-medium text-[black]">
                   Buy Now
                 </div>
               </div>
@@ -581,9 +591,16 @@ const ProductPage = (props) => {
                 Dashboard
               </Link>
             </div>
-            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+            <div
+              className="w-[30%] h-[50px] flex flex-col justify-center items-center "
+              onClick={() => {
+                setAccount(!account);
+              }}
+            >
+              {/* <Link className="w-full h-full"> */}
               <VscAccount className="text-[23px] my-[2px]" />
               Account
+              {/* </Link> */}
             </div>
           </div>
         </>

@@ -26,6 +26,74 @@ const Dashboard = () => {
   const [maximum, setMaximum] = useState(0);
   const [current, setCurrent] = useState(0);
   const [minimum, setMinimum] = useState(0);
+  const [alertNotification, setAlertNotification] = useState(false);
+  const [account, setAccount] = useState(false);
+
+  // const [status, setStatus] = useState(false);
+  const [wornStatus, setWornStatus] = useState(true);
+  // const [lastBpm, setLastBpm] = useState("");
+  // const [loading, setLoading] = useState(true);
+  // const [dataSize, setDataSize] = useState(0);
+  // const [prevDataSize, setPrevDataSize] = useState(0);
+  const [lastUpdated, setLastUpdated] = useState(Date.now());
+  // const [flag, setFlag] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    setLastUpdated(Date.now());
+    console.log("time changeddddd");
+    console.log(Date.now());
+  }, [recordData]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const timeElapsed = Date.now() - lastUpdated;
+      const timeLimit = 5000;
+      if (timeElapsed > timeLimit) {
+        setWornStatus(false);
+      } else {
+        setWornStatus(true);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [lastUpdated]);
+
+  useEffect(() => {
+    fetchFallState();
+    // fetchAlert();
+  }, []);
+
+  function fetchFallState() {
+    const user1 = firebase.auth().currentUser;
+    const StateRef = db.collection("USERS").doc(user1?.uid);
+    onSnapshot(StateRef, (snapshot) => {
+      // setStatus(snapshot.data()?.state);
+      // recordData = snapshot.data()?.Data;
+      // setLastBpm(recordData[recordData?.length - 1]?.Bpm);
+      setLastUpdated(Date.now());
+    });
+  }
+
+  useEffect(() => {
+    fetchAlertNotification();
+  }, []);
+
+  function fetchAlertNotification() {
+    const user = firebase.auth().currentUser;
+    const alertRef = db.collection("USERS").doc(user.uid);
+
+    onSnapshot(alertRef, (snapshot) => {
+      setAlertNotification(snapshot.data().state);
+    });
+  }
   useEffect(() => {
     fetchPastRecord();
   }, []);
@@ -45,40 +113,6 @@ const Dashboard = () => {
     let min = 1000;
     let max = 0;
     let count = 0;
-    // for (let i in recordData) {
-    //   let objTitle = recordData[i]["Hour"];
-    //   if (recordData[i].Hour === indexHour) {
-    //     count = count + 1;
-    //   } else {
-    //     indexHour = recordData[i].Hour;
-    //     sum = 0;
-    //     min = 1000;
-    //     max = 0;
-    //     avg = 0;
-    //     count = 1;
-    //   }
-
-    //   sum = sum + recordData[i].Bpm;
-    //   if (recordData[i].Bpm < min) {
-    //     min = recordData[i].Bpm;
-    //   }
-    //   if (recordData[i].Bpm > max) {
-    //     max = recordData[i].Bpm;
-    //   }
-
-    //   uniqueObject[objTitle] = {
-    //     Hour: indexHour,
-    //     Max: max,
-    //     Min: min,
-    //     Avg: Math.round(sum / count),
-    //   };
-    // }
-
-    // for (let i in uniqueObject) {
-    //   newArray.push(uniqueObject[i]);
-    // }
-    // console.log(newArray);
-    // setDd(newArray);
 
     recordData.forEach((element) => {
       sum = sum + element.Bpm;
@@ -110,75 +144,99 @@ const Dashboard = () => {
     // console.log(user);
   }
   return (
-    <div className="w-full h-auto bg-[#ffffff] flex flex-col justify-center items-start overflow-y-scroll">
-      <div className="min-h-[80px] w-full flex justify-center items-center font-[poppins] font-bold text-[23px]">
-        BPM History
+    <>
+      {account === true ? (
+        <>
+          <div className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50">
+            Log Out
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+      <div className="w-full h-[100svh] fixed bg-[black] flex justify-start items-start">
+        <div className="w-[500px] h-[500px] fixed left-[-200px] top-[-200px] bg-[#5fcff5] rounded-full"></div>
+        <div className="w-[300px] h-[300px] fixed bottom-[110px] right-[-110px] bg-[#976cf7] rounded-full"></div>
       </div>
-      <div className="w-full h-[40px] flex justify-start items-center text-center font-[poppins]  text-[15px] px-[20px]">
-        BPM over time
-      </div>
-      <div className="w-full h-[40px] flex justify-start items-center font-[poppins] font-bold text-[24px]  mt-[0px] px-[20px]">
-        70 - 120 BPM
-      </div>
-      <div className="w-full h-[40px] flex justify-start items-center text-center font-[poppins]  text-[14px] px-[20px] mb-[15px] text-[#797979]">
-        Last 7 days
-      </div>
-      <div className="w-full px-[20px] h-[200px] my-[20px]">
-        <Data />
-      </div>
-      {/* <div className="w-full h-[40px] flex justify-center items-center font-[poppins]  text-[18px] px-[20px]">
+      <div className="w-full h-auto text-white flex flex-col justify-center items-start overflow-y-scroll bg-[#0000004e]  backdrop-blur-3xl">
+        <div className="min-h-[80px] w-full flex justify-center items-center font-[google] font-bold text-[23px]">
+          BPM History
+        </div>
+        <div className="w-full h-[40px] flex justify-start items-center text-center font-[google]  text-[15px] px-[20px]">
+          BPM over time
+        </div>
+        <div className="w-full h-[40px] flex justify-start items-center font-[google] font-bold text-[24px]  mt-[0px] px-[20px]">
+          70 - 120 BPM
+        </div>
+        <div className="w-full h-[40px] flex justify-start items-center text-center font-[google]  text-[14px] px-[20px] mb-[15px] text-[#e1e1e1]">
+          Last 7 days
+        </div>
+        <div className="w-full px-[20px] flex justify-center items-center h-[130px] my-[20px]">
+          <div className="w-full h-full ">
+            <Data />
+          </div>
+        </div>
+        {/* <div className="w-full h-[40px] flex justify-center items-center font-[google]  text-[18px] px-[20px]">
           No Alerts
         </div> */}
 
-      <div className="w-full h-[calc(100%-80px)] ">
-        <div className="w-full h-[130px] flex flex-row justify-between items-center px-[20px]">
-          <div className="w-[47%] h-full bg-[white] border-[1.5px] border-[#ece6e9] p-[20px] rounded-2xl font-[poppins] text-[black] flex flex-col justify-end items-end  ">
-            <div className="w-full h-[25px] font-medium text-[17px]">
-              Current BPM
+        <div className="w-full h-[calc(100%-80px)] ">
+          <div className="w-full h-[130px] flex flex-row justify-between items-center px-[20px]">
+            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+              <div className="w-full h-[25px] font-medium text-[17px]">
+                Current BPM
+              </div>
+              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
+                {loading === true ? (
+                  <>Calibrating</>
+                ) : wornStatus === false ? (
+                  <>--</>
+                ) : (
+                  <>{current} bpm</>
+                )}
+              </div>
             </div>
-            <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-              {current}
+            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+              <div className="w-full h-[25px] font-medium text-[17px]">
+                Avg BPM
+              </div>
+              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
+                {average}
+              </div>
             </div>
           </div>
-          <div className="w-[47%] h-full bg-[white] border-[1.5px] border-[#ece6e9] p-[20px] rounded-2xl font-[poppins] text-[black] flex flex-col justify-end items-end  ">
-            <div className="w-full h-[25px] font-medium text-[17px]">
-              Avg BPM
-            </div>
-            <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-              {average}
-            </div>
-          </div>
-        </div>
 
-        <div className="w-full h-[130px] flex flex-row justify-between items-center mt-[20px] px-[20px]">
-          <div className="w-[47%] h-full bg-[white] border-[1.5px] border-[#ece6e9] p-[20px] rounded-2xl font-[poppins] text-[black] flex flex-col justify-end items-end  ">
-            <div className="w-full h-[25px] font-medium text-[17px]">
-              Max BPM
+          <div className="w-full h-[130px] flex flex-row justify-between items-center mt-[20px] px-[20px]">
+            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+              <div className="w-full h-[25px] font-medium text-[17px]">
+                Max BPM
+              </div>
+              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
+                {maximum}
+              </div>
             </div>
-            <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-              {maximum}
+            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+              <div className="w-full h-[25px] font-medium text-[17px]">
+                Min BPM
+              </div>
+              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
+                {minimum}
+              </div>
             </div>
           </div>
-          <div className="w-[47%] h-full bg-[white] border-[1.5px] border-[#ece6e9] p-[20px] rounded-2xl font-[poppins] text-[black] flex flex-col justify-end items-end  ">
-            <div className="w-full h-[25px] font-medium text-[17px]">
-              Min BPM
-            </div>
-            <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-              {minimum}
-            </div>
-          </div>
-        </div>
 
-        <div className="w-full h-[50px] flex justify-center items-center my-[25px] px-[20px] mb-[100px]">
-          <button
-            className="w-full h-full outline-none flex justify-center items-center font-[poppins] font-medium text-[17px] rounded-2xl text-white bg-[#e41c1b] hover:bg-[#f93b3b] drop-shadow-sm"
-            style={{ transition: ".3s" }}
-          >
-            Emergency Contact
-          </button>
+          <div className="w-full h-[50px] flex justify-center items-center my-[25px] px-[20px] mb-[100px]">
+            <button
+              className="w-full h-full outline-none flex justify-center items-center font-[google] font-medium rounded-lg text-white  bg-[#ffa947]   hover:bg-[#03045e] drop-shadow-sm"
+              style={{ transition: ".3s" }}
+            >
+              Emergency Contact
+            </button>
+          </div>
         </div>
+        <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#000000] text-[white] text-[15px] backdrop-blur-3xl"></div>
       </div>
-      <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px] bg-[#ffffffe0] backdrop-blur-xl">
+      <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#000000] text-[white] text-[15px] backdrop-blur-3xl">
         <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
           <Link
             to="/"
@@ -188,15 +246,31 @@ const Dashboard = () => {
             Home
           </Link>
         </div>
-        <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-          <Link
-            to="/alert"
-            className="w-full h-full flex justify-center items-center flex-col"
-          >
-            <HiOutlineBellAlert className="text-[23px] my-[2px]" />
-            Alerts
-          </Link>
-        </div>
+        {alertNotification === false ? (
+          <>
+            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+              <Link
+                to="/alert"
+                className="w-full h-full flex justify-center items-center flex-col"
+              >
+                <HiOutlineBellAlert className="text-[23px] my-[2px]" />
+                Alerts
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="w-[30%] h-[50px] flex flex-col text-[#ffa947] justify-center items-center ">
+              <Link
+                to="/alert"
+                className="w-full h-full flex justify-center items-center flex-col"
+              >
+                <HiMiniBellAlert className="bell text-[23px] my-[2px]" />
+                Alerts
+              </Link>
+            </div>
+          </>
+        )}
         <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
           <Link
             to="/dashboard"
@@ -206,14 +280,19 @@ const Dashboard = () => {
             Dashboard
           </Link>
         </div>
-        <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+        <div
+          className="w-[30%] h-[50px] flex flex-col justify-center items-center "
+          onClick={() => {
+            setAccount(!account);
+          }}
+        >
           {/* <Link className="w-full h-full"> */}
           <VscAccount className="text-[23px] my-[2px]" />
           Account
           {/* </Link> */}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
