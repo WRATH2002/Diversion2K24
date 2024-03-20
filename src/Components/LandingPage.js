@@ -105,7 +105,7 @@ const LandingPage = () => {
             <div className="w-[500px] h-[500px] fixed left-[-200px] top-[-200px] bg-[#5fcff5] rounded-full"></div>
             <div className="w-[300px] h-[300px] fixed bottom-[110px] right-[-110px] bg-[#976cf7] rounded-full"></div>
           </div>
-          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[#0000007b] px-[13%] md:px-[13%] lg:px-[13%] backdrop-blur-3xl">
+          <div className="w-full h-[100%] flex flex-col justify-center items-center bg-[#031e17] px-[13%] md:px-[13%] lg:px-[13%] backdrop-blur-3xl">
             {/* <img className="w-[50%] fixed border border-white" src={gi}></img> */}
             {/* <img
               className="w-[50%] border border-white"
@@ -121,13 +121,13 @@ const LandingPage = () => {
               </div>
             </div> */}
           </div>
-          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px]  text-[white]">
-            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px]  text-[#d2d2d2]">
+            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center text-[#deeed8] ">
               <Link
                 to="/"
                 className="w-full h-full flex justify-center items-center flex-col"
               >
-                <RiHome3Fill className="text-[23px] my-[2px] text-[white]" />
+                <RiHome3Fill className="text-[23px] my-[2px] " />
                 Home
               </Link>
             </div>

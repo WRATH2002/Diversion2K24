@@ -249,8 +249,8 @@ export const Data = () => {
               <stop offset="95%" stopColor="#72f63b" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="15%" stopColor="#90e0ef" stopOpacity={0.8} />
-              <stop offset="100%" stopColor="#90e0ef" stopOpacity={0} />
+              <stop offset="55%" stopColor="#274c43" stopOpacity={0.8} />
+              <stop offset="100%" stopColor="#274c43" stopOpacity={0} />
             </linearGradient>
           </defs>
           {/* <XAxis dataKey="name" /> */}
@@ -273,7 +273,7 @@ export const Data = () => {
           <Area
             type="monotone"
             dataKey="Avg"
-            stroke="#0077b6"
+            stroke="#162d27"
             fillOpacity={1}
             fill="url(#colorAvg)"
           />

@@ -16,6 +16,12 @@ import { auth, db, st } from "../firebase";
 
 import firebase from "../firebase";
 import { onSnapshot } from "firebase/firestore";
+
+import { CgSmartphoneShake } from "react-icons/cg";
+import { IoWatchOutline } from "react-icons/io5";
+import { FaPersonFalling } from "react-icons/fa6";
+import { PiHeartbeatFill } from "react-icons/pi";
+import { IoWatch } from "react-icons/io5";
 const RecordData = () => {
   // const [showAlert, setShowAlert] = useState(true);
   const [alert, setAlert] = useState(false);
@@ -109,7 +115,6 @@ const RecordData = () => {
       .collection("USERS")
       .doc(user1?.uid)
       .update({ state: false });
-
     setCountDown(30);
   }
   return (
@@ -127,7 +132,7 @@ const RecordData = () => {
         <div className="w-[500px] h-[500px] fixed left-[-200px] top-[-200px] bg-[#5fcff5] rounded-full"></div>
         <div className="w-[300px] h-[300px] fixed bottom-[110px] right-[-110px] bg-[#976cf7] rounded-full"></div>
       </div>
-      <div className="w-full h-[100svh] flex justify-center items-center bg-[#0000004e]  backdrop-blur-3xl">
+      <div className="w-full h-[100svh] flex justify-center items-center bg-[#031e17]   backdrop-blur-3xl">
         {alert === true ? (
           <div
             className="w-full h-[100svh]  fixed z-20 flex flex-col justify-center items-center drop-shadow-lg"
@@ -146,21 +151,21 @@ const RecordData = () => {
                 concern, then click on Cancel Alert.
               </div>
               <div className="w-full h-[50px] flex justify-between items-center text-center font-[google] mt-[40px] text-[15px] px-[20px]">
-                <div className="w-[29%] h-full rounded-lg  border-[1.5px] border-[#bbbbbb] text-white font-normal text-[20px] flex justify-center items-center">
+                <div className="w-[29%] h-full rounded-lg  bg-[#162d27] text-white font-normal text-[20px] flex justify-center items-center">
                   00
                 </div>
                 {/* <span className="font-bold text-[25px]">:</span> */}
-                <div className="w-[29%] h-full rounded-lg border-[1.5px] border-[#bbbbbb] text-white font-normal text-[20px] flex justify-center items-center">
+                <div className="w-[29%] h-full rounded-lg bg-[#162d27] text-white font-normal text-[20px] flex justify-center items-center">
                   00
                 </div>
                 {/* <span className="font-bold text-[25px]">:</span> */}
-                <div className="w-[29%] h-full rounded-lg border-[1.5px] border-[#bbbbbb] text-white font-normal text-[20px] flex justify-center items-center">
+                <div className="w-[29%] h-full rounded-lg bg-[#162d27] text-white font-normal text-[20px] flex justify-center items-center">
                   {countDown < 10 ? <>0{countDown}</> : <>{countDown}</>}
                 </div>
               </div>
               <div className="w-full h-[50px] flex justify-center items-center mt-[50px] px-[20px]">
                 <button
-                  className="w-full h-full outline-none flex justify-center items-center font-[google] font-medium tracking-wide text-[17px] rounded-lg text-black bg-[#ffa947] hover:bg-[#f93b3b] drop-shadow-sm"
+                  className="w-full h-full outline-none flex justify-center items-center font-[google] font-medium tracking-wide text-[17px] rounded-lg text-black bg-[#deeed8] hover:bg-[#162d27] hover:text-white drop-shadow-sm"
                   style={{ transition: ".3s" }}
                 >
                   Emergency Contact
@@ -168,7 +173,7 @@ const RecordData = () => {
               </div>
               <div className="w-full h-[50px] flex justify-center items-center mt-[15px] px-[20px]">
                 <button
-                  className="w-full h-full outline-none flex justify-center items-center font-[google] font-medium text-[17px] rounded-lg text-[white] bg-[#2c7cc7] hover:bg-[#818181] drop-shadow-sm"
+                  className="w-full h-full outline-none flex justify-center items-center font-[google] font-medium text-[17px] rounded-lg text-[white] bg-[#162d27] drop-shadow-sm"
                   style={{ transition: ".3s" }}
                   onClick={() => {
                     ignoreFallState();
@@ -180,41 +185,78 @@ const RecordData = () => {
             </div>
           </div>
         ) : (
-          <div className="w-full h-[100svh]  flex flex-col justify-center items-center">
-            <div className="h-[80px] w-full flex justify-center text-white items-center font-[google] font-bold text-[23px]">
+          <div className="w-full md:w-[60%] lg:w-[60%] h-[100svh]  flex flex-col justify-center items-center">
+            <div className="h-[80px] w-full flex justify-center text-white items-center font-[google] font-normal text-[28px] tracking-wider">
               Health Monitor
             </div>
+
             <div className="w-full h-[calc(100%-80px)] ">
               <div className="w-full h-[200px] flex flex-row justify-between items-center px-[20px]">
-                <div className="w-[47%] h-full border-[1.5px] border-[#bbbbbb]  p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
-                  <div className="w-full h-[25px] font-medium text-[17px]">
-                    Device Worn
-                  </div>
-                  {wornStatus === false ? (
-                    <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#ffa947]">
-                      Device not Worned
+                {wornStatus === true ? (
+                  <div className="w-[47%] h-full bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                    <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
+                      <IoWatch className="text-white text-[25px]" />
                     </div>
-                  ) : loading === true ? (
-                    <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#ffffff]">
-                      Calibrating Device ...
+                    <div className="w-full h-[25px] font-normal text-[#b7b7b7] mt-[20px] text-[17px]">
+                      Device Worn
                     </div>
-                  ) : (
-                    <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#63ff63]">
-                      Device Worned
-                    </div>
-                  )}
-                  {/* <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#b52f2f]">
+                    {wornStatus === false ? (
+                      <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffa947]">
+                        Device not Worned
+                      </div>
+                    ) : loading === true ? (
+                      <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffffff]">
+                        Calibrating Device ...
+                      </div>
+                    ) : (
+                      <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#7cd74c]">
+                        Device Worned
+                      </div>
+                    )}
+                    {/* <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#b52f2f]">
                 Device not Worned
               </div> */}
-                  {/* <div className="w-[40px] h-[30px] rounded-xl bg-[white] fixed flex justify-center items-center  drop-shadow-sm">
+                    {/* <div className="w-[40px] h-[30px] rounded-xl bg-[white] fixed flex justify-center items-center  drop-shadow-sm">
               <FaArrowRightLong />
             </div> */}
-                </div>
-                <div className="w-[47%] h-full border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
-                  <div className="w-full h-[25px] font-medium text-[17px] ">
+                  </div>
+                ) : (
+                  <div className="w-[47%] h-full bg-[#630000b0]  p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                    <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
+                      <IoWatch className="text-white text-[25px]" />
+                    </div>
+                    <div className="w-full h-[25px] font-normal text-[#b7b7b7] mt-[20px] text-[17px]">
+                      Device Worn
+                    </div>
+                    {wornStatus === false ? (
+                      <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffa947]">
+                        Device not Worned
+                      </div>
+                    ) : loading === true ? (
+                      <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffffff]">
+                        Calibrating Device ...
+                      </div>
+                    ) : (
+                      <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#7cd74c]">
+                        Device Worned
+                      </div>
+                    )}
+                    {/* <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#b52f2f]">
+                Device not Worned
+              </div> */}
+                    {/* <div className="w-[40px] h-[30px] rounded-xl bg-[white] fixed flex justify-center items-center  drop-shadow-sm">
+              <FaArrowRightLong />
+            </div> */}
+                  </div>
+                )}
+                <div className="w-[47%] h-full bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                  <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
+                    <FaPersonFalling className="text-white text-[25px]" />
+                  </div>
+                  <div className="w-full h-[25px] font-normal text-[#b7b7b7] mt-[20px] text-[17px] ">
                     Fall Detection
                   </div>
-                  <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#63ff63]">
+                  <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#7cd74c]">
                     Not Triggered
                   </div>
                   {/* <div className="w-[40px] h-[30px] rounded-xl bg-[white] fixed flex justify-center items-center drop-shadow-sm">
@@ -224,20 +266,24 @@ const RecordData = () => {
               </div>
 
               <div className="w-full h-[200px] flex flex-row justify-between items-center mt-[20px] px-[20px]">
-                <div className="w-[47%] h-full border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
-                  <div className="w-full h-[25px] font-medium text-[17px]">
+                <div className="w-[47%] h-full bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                  <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
+                    <PiHeartbeatFill className="text-white text-[25px]" />
+                  </div>
+
+                  <div className="w-full h-[25px] font-normal text-[#b7b7b7] mt-[20px]  text-[17px]">
                     Current BPM
                   </div>
-                  <div className="w-full h-[175px] font-bold text-[25px] mt-[5px]">
+                  <div className="w-full h-[141px] font-normal text-[25px] mt-[5px]">
                     {wornStatus === false ? <>--</> : <>{lastBpm} bpm</>}
                   </div>
 
-                  <div className="w-[40px] h-[30px] rounded-xl bg-[white] fixed flex justify-center items-center  drop-shadow-sm">
+                  <div className="w-[40px] h-[30px] rounded-xl bg-[#42b502] fixed flex justify-center items-center  drop-shadow-sm">
                     <Link
                       to="/dashboard"
                       className="w-full h-full flex justify-center items-center"
                     >
-                      <FaArrowRightLong className="text-black" />
+                      <FaArrowRightLong className="text-white" />
                     </Link>
                   </div>
                 </div>
@@ -257,14 +303,14 @@ const RecordData = () => {
 
               <div className="w-full h-[50px] flex justify-center items-center my-[25px] px-[20px]">
                 <button
-                  className="w-full h-full outline-none flex justify-center items-center font-[google] text-[17px] tracking-wide  rounded-lg text-black bg-[#ffa947]  drop-shadow-sm"
+                  className="w-[60%] md:w-[40%] lg:w-[40%] h-full outline-none flex justify-center items-center font-[google] text-[17px] tracking-wide  rounded-xl text-black bg-[#deeed8] hover:bg-[#162d27] hover:text-white  drop-shadow-sm"
                   style={{ transition: ".3s" }}
                 >
                   Emergency Contact
                 </button>
               </div>
             </div>
-            <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center text-white text-[15px]">
+            <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#031e17] text-[#d2d2d2] text-[15px]">
               <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
                 <Link
                   to="/"
@@ -274,12 +320,12 @@ const RecordData = () => {
                   Home
                 </Link>
               </div>
-              <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+              <div className="w-[30%] h-[50px] flex flex-col justify-center text-[#deeed8] items-center ">
                 <Link
                   to="/alert"
                   className="w-full h-full flex justify-center items-center flex-col"
                 >
-                  <HiMiniBellAlert className="text-[23px] my-[2px]" />
+                  <HiMiniBellAlert className="text-[23px]  my-[2px]" />
                   Alerts
                 </Link>
               </div>

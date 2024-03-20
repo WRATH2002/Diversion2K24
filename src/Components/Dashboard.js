@@ -158,85 +158,87 @@ const Dashboard = () => {
         <div className="w-[500px] h-[500px] fixed left-[-200px] top-[-200px] bg-[#5fcff5] rounded-full"></div>
         <div className="w-[300px] h-[300px] fixed bottom-[110px] right-[-110px] bg-[#976cf7] rounded-full"></div>
       </div>
-      <div className="w-full h-auto text-white flex flex-col justify-center items-start overflow-y-scroll bg-[#0000004e]  backdrop-blur-3xl">
-        <div className="min-h-[80px] w-full flex justify-center items-center font-[google] font-bold text-[23px]">
-          BPM History
-        </div>
-        <div className="w-full h-[40px] flex justify-start items-center text-center font-[google]  text-[15px] px-[20px]">
-          BPM over time
-        </div>
-        <div className="w-full h-[40px] flex justify-start items-center font-[google] font-bold text-[24px]  mt-[0px] px-[20px]">
-          70 - 120 BPM
-        </div>
-        <div className="w-full h-[40px] flex justify-start items-center text-center font-[google]  text-[14px] px-[20px] mb-[15px] text-[#e1e1e1]">
-          Last 7 days
-        </div>
-        <div className="w-full px-[20px] flex justify-center items-center h-[130px] my-[20px]">
-          <div className="w-full h-full ">
-            <Data />
+      <div className="w-full h-auto text-white flex flex-col justify-center items-center overflow-y-scroll bg-[#031e17]  backdrop-blur-3xl">
+        <div className="w-full md:w-[60%] lg:w-[60%] h-full  flex flex-col justify-start items-center">
+          <div className="min-h-[80px] w-full flex justify-center items-center font-[google] font-normal text-[28px] tracking-wider">
+            BPM History
           </div>
-        </div>
-        {/* <div className="w-full h-[40px] flex justify-center items-center font-[google]  text-[18px] px-[20px]">
+          <div className="w-full h-[40px] flex justify-start items-center text-center font-[google] font-normal text-[#b7b7b7] text-[17px] px-[20px]">
+            BPM over time
+          </div>
+          <div className="w-full h-[40px] flex justify-start items-center font-[google] font-normal text-[24px]   mt-[0px] px-[20px]">
+            {minimum} - {maximum} BPM
+          </div>
+          <div className="w-full h-[40px] flex justify-start items-center text-center font-[google]  text-[14px] px-[20px] mb-[15px] text-[#e1e1e1]">
+            Last 7 days
+          </div>
+          <div className="w-full px-[20px] flex justify-center items-center h-[170px] my-[20px]">
+            <div className="w-full h-full ">
+              <Data />
+            </div>
+          </div>
+          {/* <div className="w-full h-[40px] flex justify-center items-center font-[google]  text-[18px] px-[20px]">
           No Alerts
         </div> */}
 
-        <div className="w-full h-[calc(100%-80px)] ">
-          <div className="w-full h-[130px] flex flex-row justify-between items-center px-[20px]">
-            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
-              <div className="w-full h-[25px] font-medium text-[17px]">
-                Current BPM
+          <div className="w-full h-[calc(100%-80px)] mt-[20px] ">
+            <div className="w-full h-[200px] flex flex-row justify-between items-center px-[20px]">
+              <div className="w-[47%] h-full  bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+                <div className="w-full h-[25px] text-[#b7b7b7] font-normal text-[17px]">
+                  Current BPM
+                </div>
+                <div className="w-full h-[175px]  font-normal text-[25px] mt-[5px] ">
+                  {loading === true ? (
+                    <>Calibrating</>
+                  ) : wornStatus === false ? (
+                    <>--</>
+                  ) : (
+                    <>{current} bpm</>
+                  )}
+                </div>
               </div>
-              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-                {loading === true ? (
-                  <>Calibrating</>
-                ) : wornStatus === false ? (
-                  <>--</>
-                ) : (
-                  <>{current} bpm</>
-                )}
+              <div className="w-[47%] h-full  bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+                <div className="w-full h-[25px]  text-[#b7b7b7] font-normal text-[17px]">
+                  Avg BPM
+                </div>
+                <div className="w-full h-[175px] font-normal text-[25px] mt-[5px] ">
+                  {average} bpm
+                </div>
               </div>
             </div>
-            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
-              <div className="w-full h-[25px] font-medium text-[17px]">
-                Avg BPM
-              </div>
-              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-                {average}
-              </div>
-            </div>
-          </div>
 
-          <div className="w-full h-[130px] flex flex-row justify-between items-center mt-[20px] px-[20px]">
-            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
-              <div className="w-full h-[25px] font-medium text-[17px]">
-                Max BPM
+            <div className="w-full h-[200px] flex flex-row justify-between items-center mt-[20px] px-[20px]">
+              <div className="w-[47%] h-full  bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+                <div className="w-full h-[25px] text-[#b7b7b7] font-normal text-[17px]">
+                  Max BPM
+                </div>
+                <div className="w-full h-[175px] font-normal text-[25px] mt-[5px] ">
+                  {maximum} bpm
+                </div>
               </div>
-              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-                {maximum}
+              <div className="w-[47%] h-full  bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
+                <div className="w-full h-[25px] text-[#b7b7b7] font-normal text-[17px]">
+                  Min BPM
+                </div>
+                <div className="w-full h-[175px] font-normal text-[25px] mt-[5px] ">
+                  {minimum} bpm
+                </div>
               </div>
             </div>
-            <div className="w-[47%] h-full  border-[1.5px] border-[#bbbbbb] p-[20px] rounded-2xl font-[google] text-[white] flex flex-col justify-end items-end  ">
-              <div className="w-full h-[25px] font-medium text-[17px]">
-                Min BPM
-              </div>
-              <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] ">
-                {minimum}
-              </div>
-            </div>
-          </div>
 
-          <div className="w-full h-[50px] flex justify-center items-center my-[25px] px-[20px] mb-[100px]">
-            <button
-              className="w-full h-full outline-none flex justify-center items-center font-[google] font-medium rounded-lg text-white  bg-[#ffa947]   hover:bg-[#03045e] drop-shadow-sm"
-              style={{ transition: ".3s" }}
-            >
-              Emergency Contact
-            </button>
+            <div className="w-full h-[50px] flex justify-center items-center my-[25px] px-[20px] mb-[100px]">
+              <button
+                className="w-[60%] md:w-[40%] lg:w-[40%] h-full outline-none flex justify-center items-center font-[google] font-medium rounded-xl text-black  bg-[#deeed8]   hover:bg-[#162d27] hover:text-white drop-shadow-sm"
+                style={{ transition: ".3s" }}
+              >
+                Emergency Contact
+              </button>
+            </div>
           </div>
+          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#000000] text-[white] text-[15px] backdrop-blur-3xl"></div>
         </div>
-        <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#000000] text-[white] text-[15px] backdrop-blur-3xl"></div>
       </div>
-      <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#000000] text-[white] text-[15px] backdrop-blur-3xl">
+      <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#031e17] text-[#d2d2d2] text-[15px] backdrop-blur-3xl">
         <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
           <Link
             to="/"
@@ -271,7 +273,7 @@ const Dashboard = () => {
             </div>
           </>
         )}
-        <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+        <div className="w-[30%] h-[50px] flex flex-col justify-center text-[#deeed8] items-center ">
           <Link
             to="/dashboard"
             className="w-full h-full flex justify-center items-center flex-col"

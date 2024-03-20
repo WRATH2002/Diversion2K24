@@ -11,7 +11,7 @@ import three3 from "../Assets/img/12.png";
 
 const Segment3 = () => {
   return (
-    <div className="w-full bg-[]   h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]   flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-end md:items-end lg:justify-end lg:items-end ">
+    <div className="w-full bg-[]   h-[100vh] md:h-[calc(100svh-70px)] lg:h-[calc(100svh-70px)]   flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-center md:items-center lg:justify-center lg:items-center ">
       <div className="w-full  md:w-[50%] lg:w-[50%] h-full flex justify-center items-center  text-[white] font-[google] pl-[0] md:pl-[20px] lg:pl-[20px]  ">
         <div className="w-full h-full flex flex-col items-center justify-center ">
           <span className="leading-[1] text-[27px] md:text-[26px] lg:text-[26px] text-[#dcdcdc]  font-[google] w-full">
@@ -20,7 +20,7 @@ const Segment3 = () => {
           <span className="font-bold leading-[1] text-[55px] md:text-[55px] lg:text-[55px] text-[#ffffff] font-[google] mt-[15px] w-full flex justify-start">
             Swift Detection & Timely Response
           </span>
-          <span className="leading-normal font-normal text-[18px] md:text-[15px] lg:text-[15px] mt-[40px] font-[google] text-[#c7c7c7] w-full overflow-hidden text-ellipsis text-justify">
+          <span className="leading-normal font-normal text-[18px] md:text-[15px] lg:text-[15px] mt-[40px] font-[google] text-[#b7b7b7] w-full overflow-hidden text-ellipsis text-justify">
             Safeguard your loved ones with our revolutionary smart wrist gadget,
             designed to combat the staggering statistics surrounding falls in
             older adults. With an estimated
@@ -41,9 +41,9 @@ const Segment3 = () => {
           </span>
         </div>
       </div>
-      <div className="h-full w-[50%]  p-[20px] hidden md:flex lg:flex justify-center items-center rounded-lg">
+      {/* <div className="h-full w-[50%]  p-[20px] hidden md:flex lg:flex justify-center items-center rounded-lg">
         <img className="w-full rounded-lg" src={three1}></img>
-      </div>
+      </div> */}
     </div>
   );
 };
