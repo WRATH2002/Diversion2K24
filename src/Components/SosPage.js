@@ -17,9 +17,12 @@ const SosPage = () => {
             Location: Jadavpur, Kolkata
           </span>
         </div>
-        <div className="w-[200px] h-[200px] rounded-full bg-[#111a1e] fixed justify-center items-center flex cursor-pointer" onClick={() => {
+        <div
+          className="w-[200px] h-[200px] rounded-full bg-[#111a1e] fixed justify-center items-center flex cursor-pointer"
+          onClick={() => {
             toast.success("Ambulance is coming soon");
-        }}>
+          }}
+        >
           <div className="w-[150px] h-[150px] rounded-full bg-[#273c46] fixed flex justify-center items-center">
             <span className="font-[jet] text-[30px] text-[white] font-semibold ">
               SOS

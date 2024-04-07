@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import {
-//   LineChart,
-//   Line,
-//   XAxis,
-//   YAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   Legend,
-//   ResponsiveContainer,
-// } from "recharts";
-
+import { auth, db, st } from "../firebase";
+import firebase from "../firebase";
+import { onSnapshot } from "firebase/firestore";
 import {
   Area,
   AreaChart,
@@ -21,122 +13,6 @@ import {
   Legend,
   Tooltip,
 } from "recharts";
-
-import { auth, db, st } from "../firebase";
-
-import firebase from "../firebase";
-import { onSnapshot } from "firebase/firestore";
-
-// const salesData = [
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 1,
-//     Bpm: 85,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 1,
-//     Bpm: 97,
-//   },
-//   {
-//     //  Minute:
-//     Fall: false,
-//     Hour: 1,
-//     Bpm: 89,
-//   },
-//   {
-//     //  Minute:
-//     Fall: false,
-//     Hour: 1,
-//     Bpm: 104,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 2,
-//     Bpm: 114,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 2,
-//     Bpm: 66,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 2,
-//     Bpm: 76,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 2,
-//     Bpm: 109,
-//   },
-//   {
-//     //  Minute:
-//     Fall: false,
-//     Hour: 3,
-//     Bpm: 69,
-//   },
-//   {
-//     //  Minute:
-//     Fall: false,
-//     Hour: 3,
-//     Bpm: 67,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 3,
-//     Bpm: 92,
-//   },
-//   {
-//     //  Minute:
-//     Fall: false,
-//     Hour: 3,
-//     Bpm: 86,
-//   },
-//   {
-//     //  Minute:
-//     Fall: false,
-//     Hour: 3,
-//     Bpm: 99,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 4,
-//     Bpm: 104,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 4,
-//     Bpm: 102,
-//   },
-//   {
-//     //  Minute:
-//     Fall: false,
-//     Hour: 4,
-//     Bpm: 80,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 4,
-//     Bpm: 118,
-//   },
-//   {
-//     // Minute:
-//     Fall: false,
-//     Hour: 5,
-//     Bpm: 89,
-//   },
-// ];
 
 export const Data = () => {
   const [recordData, setRecordData] = useState();
@@ -211,8 +87,8 @@ export const Data = () => {
       console.log(snapshot.data().Data);
       setRecordData(snapshot.data().Data);
     });
-    // console.log(user);
   }
+
   return (
     <div className="w-full h-full">
       <ResponsiveContainer width="100%" height="100%">
@@ -240,14 +116,6 @@ export const Data = () => {
         {/* </ResponsiveContainer> */}
         <AreaChart width={730} height={250} data={dd}>
           <defs>
-            <linearGradient id="colorMax" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="colorMin" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#72f63b" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#72f63b" stopOpacity={0} />
-            </linearGradient>
             <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
               <stop offset="55%" stopColor="#274c43" stopOpacity={0.8} />
               <stop offset="100%" stopColor="#274c43" stopOpacity={0} />
@@ -290,17 +158,10 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
       <div className="p-4 bg-[#373748] border border-[#8d6c6e] rounded-xl flex flex-col gap-4 ">
-        <p className="text-medium text-white text-lg">Hour : {label}</p>
-        <p className="text-sm text-blue-400 font-[google]">
-          Max:
-          <span className="ml-2">{payload[0].value} bpm</span>
-        </p>
-        <p className="text-sm text-[#72f63b] font-[google]">
-          Min:
-          <span className="ml-2">{payload[1].value} bpm</span>
-        </p>
+        <p className="text-medium text-black text-[18px]">Hour : {label}</p>
+
         <p className="text-sm text-[#ff7b00] font-[google]">
-          Avg:
+          Bpm:
           <span className="ml-2">{payload[2].value} bpm</span>
         </p>
       </div>

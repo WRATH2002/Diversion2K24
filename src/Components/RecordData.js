@@ -12,7 +12,7 @@ import { HiMiniBellAlert } from "react-icons/hi2";
 
 import { VscAccount } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-import { auth, db, st } from "../firebase";
+// import { auth, db, st } from "../firebase";
 
 import firebase from "../firebase";
 import { onSnapshot } from "firebase/firestore";
@@ -22,6 +22,9 @@ import { IoWatchOutline } from "react-icons/io5";
 import { FaPersonFalling } from "react-icons/fa6";
 import { PiHeartbeatFill } from "react-icons/pi";
 import { IoWatch } from "react-icons/io5";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+// import { useEffect, useState } from "react";
+import { auth, db } from "../firebase";
 const RecordData = () => {
   // const [showAlert, setShowAlert] = useState(true);
   const [alert, setAlert] = useState(false);
@@ -117,11 +120,22 @@ const RecordData = () => {
       .update({ state: false });
     setCountDown(30);
   }
+
+  const userSignOut = () => {
+    signOut(auth)
+      .then(() => console.log("Signed Out Successfully"))
+      .catch((error) => console.log(error));
+  };
   return (
     <>
       {account === true ? (
         <>
-          <div className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50">
+          <div
+            className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50"
+            onClick={() => {
+              userSignOut();
+            }}
+          >
             Log Out
           </div>
         </>
@@ -193,7 +207,7 @@ const RecordData = () => {
             <div className="w-full h-[calc(100%-80px)] ">
               <div className="w-full h-[200px] flex flex-row justify-between items-center px-[20px]">
                 {wornStatus === true ? (
-                  <div className="w-[47%] h-full bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                  <div className="w-[47%] h-full bg-[#162d27] p-[20px] md:p-[40px] lg:p-[40px]  rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
                     <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
                       <IoWatch className="text-white text-[25px]" />
                     </div>
@@ -221,7 +235,7 @@ const RecordData = () => {
             </div> */}
                   </div>
                 ) : (
-                  <div className="w-[47%] h-full bg-[#630000b0]  p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                  <div className="w-[47%] h-full bg-[#630000b0]  p-[20px] md:p-[40px] lg:p-[40px]  rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
                     <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
                       <IoWatch className="text-white text-[25px]" />
                     </div>
@@ -249,7 +263,7 @@ const RecordData = () => {
             </div> */}
                   </div>
                 )}
-                <div className="w-[47%] h-full bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                <div className="w-[47%] h-full bg-[#162d27] p-[20px] md:p-[40px] lg:p-[40px]  rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
                   <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
                     <FaPersonFalling className="text-white text-[25px]" />
                   </div>
@@ -266,7 +280,7 @@ const RecordData = () => {
               </div>
 
               <div className="w-full h-[200px] flex flex-row justify-between items-center mt-[20px] px-[20px]">
-                <div className="w-[47%] h-full bg-[#162d27] p-[20px] rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
+                <div className="w-[47%] h-full bg-[#162d27] p-[20px] md:p-[40px] lg:p-[40px]  rounded-2xl font-[google] text-[#ffffff] flex flex-col justify-end items-end  drop-shadow-sm">
                   <div className="w-full h-[25px] font-normal text-[#b7b7b7]  text-[17px]">
                     <PiHeartbeatFill className="text-white text-[25px]" />
                   </div>
@@ -310,44 +324,46 @@ const RecordData = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center bg-[#031e17] text-[#d2d2d2] text-[15px]">
-              <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-                <Link
-                  to="/"
-                  className="w-full h-full flex justify-center items-center flex-col"
+            <div className="w-full h-[70px] fixed bottom-0 flex justify-center items-center bg-[#031e17] text-[#d2d2d2] text-[15px]">
+              <div className="w-full md:w-[60%] lg:w-[60%] h-full flex justify-between items-center ">
+                <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+                  <Link
+                    to="/"
+                    className="w-full h-full flex justify-center items-center flex-col"
+                  >
+                    <RiHome3Line className="text-[23px] my-[2px]" />
+                    Home
+                  </Link>
+                </div>
+                <div className="w-[30%] h-[50px] flex flex-col justify-center text-[#deeed8] items-center ">
+                  <Link
+                    to="/alert"
+                    className="w-full h-full flex justify-center items-center flex-col"
+                  >
+                    <HiMiniBellAlert className="text-[23px]  my-[2px]" />
+                    Alerts
+                  </Link>
+                </div>
+                <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+                  <Link
+                    to="/dashboard"
+                    className="w-full h-full flex justify-center items-center flex-col"
+                  >
+                    <MdOutlineSpaceDashboard className="text-[23px] my-[2px]" />
+                    Dashboard
+                  </Link>
+                </div>
+                <div
+                  className="w-[30%] h-[50px] flex flex-col justify-center items-center "
+                  onClick={() => {
+                    setAccount(!account);
+                  }}
                 >
-                  <RiHome3Line className="text-[23px] my-[2px]" />
-                  Home
-                </Link>
-              </div>
-              <div className="w-[30%] h-[50px] flex flex-col justify-center text-[#deeed8] items-center ">
-                <Link
-                  to="/alert"
-                  className="w-full h-full flex justify-center items-center flex-col"
-                >
-                  <HiMiniBellAlert className="text-[23px]  my-[2px]" />
-                  Alerts
-                </Link>
-              </div>
-              <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-                <Link
-                  to="/dashboard"
-                  className="w-full h-full flex justify-center items-center flex-col"
-                >
-                  <MdOutlineSpaceDashboard className="text-[23px] my-[2px]" />
-                  Dashboard
-                </Link>
-              </div>
-              <div
-                className="w-[30%] h-[50px] flex flex-col justify-center items-center "
-                onClick={() => {
-                  setAccount(!account);
-                }}
-              >
-                {/* <Link className="w-full h-full"> */}
-                <VscAccount className="text-[23px] my-[2px]" />
-                Account
-                {/* </Link> */}
+                  {/* <Link className="w-full h-full"> */}
+                  <VscAccount className="text-[23px] my-[2px]" />
+                  Account
+                  {/* </Link> */}
+                </div>
               </div>
             </div>
           </div>

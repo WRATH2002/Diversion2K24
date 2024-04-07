@@ -41,6 +41,12 @@ import { VscAccount } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import { onSnapshot } from "firebase/firestore";
 
+// import { auth } from "../firebase";
+// import { db } from "../firebase";
+// import firebase from "../firebase";
+// import { Timestamp, onSnapshot, serverTimestamp } from "firebase/firestore";
+// import { onAuthStateChanged, signOut } from "firebase/auth";
+
 const ProductPage = (props) => {
   const [authUser, setAuthUser] = useState(null);
   const [modal, setModal] = useState(false);
@@ -99,11 +105,23 @@ const ProductPage = (props) => {
       InsuranceCompany: inCom,
     });
   }
+
+  const userSignOut = () => {
+    signOut(auth)
+      .then(() => console.log("Signed Out Successfully"))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       {account === true ? (
         <>
-          <div className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50">
+          <div
+            className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50"
+            onClick={() => {
+              userSignOut();
+            }}
+          >
             Log Out
           </div>
         </>
@@ -115,7 +133,7 @@ const ProductPage = (props) => {
           <div className="w-[100%] h-[80px]"></div>
           {modal === true ? (
             <div
-              className="w-[100%] h-[calc(100svh)] flex justify-center top-[0] items-center fixed bg-[white]  backdrop-blur-sm z-50"
+              className="w-[100%] h-[calc(100svh)] flex justify-center top-[0] items-center fixed bg-[#031e17]  backdrop-blur-sm z-50"
               onClick={() => {
                 // setName(false);
                 // setModal(false);
@@ -133,13 +151,13 @@ const ProductPage = (props) => {
                 className="w-full h-full"
               > */}
               <div
-                className="w-[90%] md:w-[390px] lg:w-[390px] rounded-2xl p-[30px] py-[50px] h-[80%] md:h-[90%] lg:h-[90%] bg-[white]  z-50 flex flex-col text-white justify-between items-start font-[google]"
+                className="w-[90%] md:w-[390px] lg:w-[390px] rounded-2xl p-[30px] py-[50px] h-[80%] md:h-[90%] lg:h-[90%] bg-[#031e17]  z-50 flex flex-col text-white justify-between items-start font-[google]"
                 onClick={() => {
                   // setName(false);
                   // setModal(true);
                 }}
               >
-                <span className="leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[google] font-semibold text-[#000000] mb-[-4px] w-full  flex flex-wrap">
+                <span className="leading-[1.2] text-[21px] md:text-[21px] lg:text-[21px] font-[google] font-semibold text-[#ffffff] mb-[-4px] w-full  flex flex-wrap">
                   Avail One-Click SOS Service
                 </span>
                 <span className="font-thin leading-[1.2] text-[13px] md:text-[13px] lg:text-[13px] font-[google] mb-[20px] text-[#8d8d8d] mt-[10px] w-full  flex flex-wrap">
@@ -148,7 +166,7 @@ const ProductPage = (props) => {
                 <div className="w-full h-[60px] my-[1px] mt-[10px]  flex flex-col justify-start items-start">
                   {name === true && inName.length != 0 ? (
                     <span
-                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#031e17] px-[4px]  z-50 text-[#56bf64]"
                       style={{ transition: ".15s" }}
                     >
                       Name
@@ -170,13 +188,13 @@ const ProductPage = (props) => {
                     // }}
                     value={inName}
                     onChange={(e) => setInName(e.target.value)}
-                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#162d27] text-[#ffffff] outline-none text-[14px]"
                   ></input>
                 </div>
                 <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                   {add === true && inAdd.length != 0 ? (
                     <span
-                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#031e17] px-[4px]  z-50 text-[#56bf64]"
                       style={{ transition: ".15s" }}
                     >
                       Address
@@ -198,13 +216,13 @@ const ProductPage = (props) => {
                     // onBlur={() => {
                     //   setAdd(false);
                     // }}
-                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#162d27] text-[#ffffff] outline-none text-[14px]"
                   ></input>
                 </div>
                 <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                   {care === true && inCare.length != 0 ? (
                     <span
-                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#031e17] px-[4px]  z-50 text-[#56bf64]"
                       style={{ transition: ".15s" }}
                     >
                       Name of Caretaker
@@ -226,13 +244,13 @@ const ProductPage = (props) => {
                     // onBlur={() => {
                     //   setCare(false);
                     // }}
-                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#162d27] text-[#ffffff] outline-none text-[14px]"
                   ></input>
                 </div>
                 <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                   {id === true && inId.length != 0 ? (
                     <span
-                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#031e17] px-[4px]  z-50 text-[#56bf64]"
                       style={{ transition: ".15s" }}
                     >
                       Insurance Id
@@ -254,13 +272,13 @@ const ProductPage = (props) => {
                     // onBlur={() => {
                     //   setId(false);
                     // }}
-                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#162d27] text-[#ffffff] outline-none text-[14px]"
                   ></input>
                 </div>
                 <div className="w-full h-[60px] my-[1px]  flex flex-col justify-start items-start">
                   {com === true && inCom.length != 0 ? (
                     <span
-                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#ffffff] px-[4px]  z-50 text-[#56bf64]"
+                      className="ml-[16px] h-[18px] text-[12.5px] mt-[-4px] fixed bg-[#031e17] px-[4px]  z-50 text-[#56bf64]"
                       style={{ transition: ".15s" }}
                     >
                       Company Name
@@ -282,13 +300,13 @@ const ProductPage = (props) => {
                     // onBlur={() => {
                     //   setCom(false);
                     // }}
-                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#c5c5c6] text-[#000000] outline-none text-[14px]"
+                    className="w-full z-40 bg-transparent h-[50px] rounded-xl my-[5px] px-[20px] border-[1.5px] border-[#162d27] text-[#ffffff] outline-none text-[14px]"
                   ></input>
                 </div>
 
                 <button
                   // placeholder="Last Name"
-                  className="w-full bg-gradient-to-b from-[#8be962] to-[#6cd179] h-[50px] rounded-xl my-[5px] font-[google] mt-[30px] px-[20px] text-[white] outline-none"
+                  className="w-full bg-[#7e9774] h-[50px] rounded-xl my-[5px] font-[google] mt-[30px] px-[20px] text-[white] outline-none"
                   style={{ transition: ".2s" }}
                   onClick={() => {
                     setModal(false);
@@ -304,7 +322,7 @@ const ProductPage = (props) => {
                 </button>
                 <button
                   // placeholder="Last Name"
-                  className="w-full bg-[#adadad] h-[50px] rounded-xl mt-[5px] font-[google] px-[20px] text-[white] outline-none"
+                  className="w-full bg-[#162d27] h-[50px] rounded-xl mt-[5px] font-[google] px-[20px] text-[white] outline-none"
                   style={{ transition: ".2s" }}
                   onClick={() => {
                     setModal(false);
@@ -319,7 +337,7 @@ const ProductPage = (props) => {
           ) : (
             <></>
           )}
-          <div className="w-full h-[calc(100svh-70px)] bg-[#ffffff] fixed top-0 flex flex-col md:flex-row lg:flex-row  justify-between  items-center px-[13%] pt-0  z-30">
+          <div className="w-full h-[calc(100svh-70px)] bg-[#031e17] fixed top-0 flex flex-col md:flex-row lg:flex-row  justify-between  items-center px-[13%] pt-0  z-30">
             <div className="w-full md:w-[50%] lg:w-[50%] h-[50%]  md:h-full lg:h-full  flex flex-col justify-center items-center p-[6%]">
               <div className="h-[calc(100%-10px)] w-full  flex justify-center items-center">
                 {colorMode === 2 ? (
@@ -456,11 +474,11 @@ const ProductPage = (props) => {
             </div>
             <div className="w-full md:w-[50%] lg:w-[50%] h-[50%]  md:h-full lg:h-full flex flex-col justify-between md:justify-center lg:justify-center items-center md:items-start lg:items-start pb-[20px]">
               <div className="w-full">
-                <div className="font-bold font-[google] leading-[1] text-[39px] md:text-[50px] lg:text-[50px] text-[#000000] mt-[10px] w-full flex justify-start">
+                <div className="font-bold font-[google] leading-[1] text-[39px] md:text-[50px] lg:text-[50px] text-[#ffffff] mt-[10px] w-full flex justify-start">
                   <span>Smart Band</span>
                 </div>
                 <div className="w-full font-[google] font-normal mt-[10px]">
-                  <span className="text-[23px] text-[#424242] ">
+                  <span className="text-[23px] text-[#8b8b8b] ">
                     Rs. 1299 /-
                   </span>
                 </div>
@@ -530,7 +548,7 @@ const ProductPage = (props) => {
                 </div>
               </div>
               <div
-                className="w-[100%]  md:w-[35%] lg:w-[35%] h-[60px] bg-gradient-to-b from-[#8be962] to-[#6cd179] mt-0 md:mt-[30px] lg:mt-[30px] cursor-pointer  rounded-xl flex justify-center items-center"
+                className="w-[100%]  md:w-[35%] lg:w-[35%] h-[50px] bg-[#7e9774] mt-0 md:mt-[30px] lg:mt-[30px] cursor-pointer  rounded-xl flex justify-center items-center"
                 style={{ transition: ".2s" }}
                 onClick={() => {
                   setModal(true);
@@ -545,62 +563,64 @@ const ProductPage = (props) => {
               </button> */}
             </div>
           </div>
-          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px] bg-[#ffffffe0] backdrop-blur-xl">
-            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-              <Link
-                to="/"
-                className="w-full h-full flex justify-center items-center flex-col"
-              >
-                <RiHome3Fill className="text-[23px] my-[2px]" />
-                Home
-              </Link>
-            </div>
+          <div className="w-full h-[70px] fixed bottom-0 flex justify-center items-center  text-[15px] bg-[#031e17] text-[#d2d2d2] backdrop-blur-xl">
+            <div className="w-full md:w-[60%] lg:w-[60%] h-full flex justify-between items-center ">
+              <div className="w-[30%] h-[50px] flex flex-col justify-center items-center text-[#deeed8]">
+                <Link
+                  to="/"
+                  className="w-full h-full flex justify-center items-center flex-col"
+                >
+                  <RiHome3Fill className="text-[23px] my-[2px]" />
+                  Home
+                </Link>
+              </div>
 
-            {alertNotification === false ? (
-              <>
-                <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-                  <Link
-                    to="/alert"
-                    className="w-full h-full flex justify-center items-center flex-col"
-                  >
-                    <HiOutlineBellAlert className="text-[23px] my-[2px]" />
-                    Alerts
-                  </Link>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="w-[30%] h-[50px] flex flex-col text-[#e41c1b] justify-center items-center ">
-                  <Link
-                    to="/alert"
-                    className="w-full h-full flex justify-center items-center flex-col"
-                  >
-                    <HiMiniBellAlert className="bell text-[23px] my-[2px]" />
-                    Alerts
-                  </Link>
-                </div>
-              </>
-            )}
+              {alertNotification === false ? (
+                <>
+                  <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+                    <Link
+                      to="/alert"
+                      className="w-full h-full flex justify-center items-center flex-col"
+                    >
+                      <HiOutlineBellAlert className="text-[23px] my-[2px]" />
+                      Alerts
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-[30%] h-[50px] flex flex-col text-[#e41c1b] justify-center items-center ">
+                    <Link
+                      to="/alert"
+                      className="w-full h-full flex justify-center items-center flex-col"
+                    >
+                      <HiMiniBellAlert className="bell text-[23px] my-[2px]" />
+                      Alerts
+                    </Link>
+                  </div>
+                </>
+              )}
 
-            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-              <Link
-                to="/dashboard"
-                className="w-full h-full flex justify-center items-center flex-col"
+              <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+                <Link
+                  to="/dashboard"
+                  className="w-full h-full flex justify-center items-center flex-col"
+                >
+                  <MdOutlineSpaceDashboard className="text-[23px] my-[2px]" />
+                  Dashboard
+                </Link>
+              </div>
+              <div
+                className="w-[30%] h-[50px] flex flex-col justify-center items-center "
+                onClick={() => {
+                  setAccount(!account);
+                }}
               >
-                <MdOutlineSpaceDashboard className="text-[23px] my-[2px]" />
-                Dashboard
-              </Link>
-            </div>
-            <div
-              className="w-[30%] h-[50px] flex flex-col justify-center items-center "
-              onClick={() => {
-                setAccount(!account);
-              }}
-            >
-              {/* <Link className="w-full h-full"> */}
-              <VscAccount className="text-[23px] my-[2px]" />
-              Account
-              {/* </Link> */}
+                {/* <Link className="w-full h-full"> */}
+                <VscAccount className="text-[23px] my-[2px]" />
+                Account
+                {/* </Link> */}
+              </div>
             </div>
           </div>
         </>

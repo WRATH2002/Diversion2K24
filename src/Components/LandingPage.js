@@ -21,9 +21,9 @@ import TrackingPage from "./TrackingPage";
 import Solution from "./Solution";
 import Document from "./Document";
 import AuthDetails from "./AuthDetails";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { auth } from "../firebase";
+// import { onAuthStateChanged, signOut } from "firebase/auth";
+// import { useEffect, useState } from "react";
+// import { auth } from "../firebase";
 import gi from "../Assets/img/gi.gif";
 import RecordData from "./RecordData";
 import Dashboard from "./Dashboard";
@@ -43,10 +43,13 @@ import { VscAccount } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 // import { onAuthStateChanged, signOut } from "firebase/auth";
 // import { useEffect, useState } from "react";
-import { db } from "../firebase";
+// import { db } from "../firebase";
 import firebase from "../firebase";
 import { onSnapshot } from "firebase/firestore";
 // import AuthDetails from "./AuthDetails";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { auth, db } from "../firebase";
 
 const LandingPage = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -79,12 +82,23 @@ const LandingPage = () => {
     };
   }, []);
 
+  const userSignOut = () => {
+    signOut(auth)
+      .then(() => console.log("Signed Out Successfully"))
+      .catch((error) => console.log(error));
+  };
+
   return (
     <>
       {account === true ? (
         <>
           <div className="w-[150px] h-[120px] rounded-xl bg-[white] fixed bottom-[80px] z-50 right-[20px]">
-            <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+            <div
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+              onClick={() => {
+                userSignOut();
+              }}
+            >
               Log Out
             </div>
             <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
@@ -121,60 +135,62 @@ const LandingPage = () => {
               </div>
             </div> */}
           </div>
-          <div className="w-full h-[70px] fixed bottom-0 flex justify-between items-center  text-[15px]  text-[#d2d2d2]">
-            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center text-[#deeed8] ">
-              <Link
-                to="/"
-                className="w-full h-full flex justify-center items-center flex-col"
+          <div className="w-full h-[70px] fixed bottom-0 flex justify-center items-center  text-[15px]  text-[#d2d2d2]">
+            <div className="w-full md:w-[60%] lg:w-[60%] h-full flex justify-between items-center ">
+              <div className="w-[30%] h-[50px] flex flex-col justify-center items-center text-[#deeed8] ">
+                <Link
+                  to="/"
+                  className="w-full h-full flex justify-center items-center flex-col"
+                >
+                  <RiHome3Fill className="text-[23px] my-[2px] " />
+                  Home
+                </Link>
+              </div>
+              {alertNotification === false ? (
+                <>
+                  <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+                    <Link
+                      to="/alert"
+                      className="w-full h-full flex justify-center items-center flex-col"
+                    >
+                      <HiOutlineBellAlert className="text-[23px] my-[2px]" />
+                      Alerts
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-[30%] h-[50px] flex flex-col text-[#e41c1b] justify-center items-center ">
+                    <Link
+                      to="/alert"
+                      className="w-full h-full flex justify-center items-center flex-col"
+                    >
+                      <HiMiniBellAlert className="bell text-[23px] my-[2px]" />
+                      Alerts
+                    </Link>
+                  </div>
+                </>
+              )}
+              <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
+                <Link
+                  to="/dashboard"
+                  className="w-full h-full flex justify-center items-center flex-col"
+                >
+                  <MdOutlineSpaceDashboard className="text-[23px] my-[2px]" />
+                  Dashboard
+                </Link>
+              </div>
+              <div
+                className="w-[30%] h-[50px] flex flex-col justify-center items-center  backdrop-blur-3xl"
+                onClick={() => {
+                  setAccount(!account);
+                }}
               >
-                <RiHome3Fill className="text-[23px] my-[2px] " />
-                Home
-              </Link>
-            </div>
-            {alertNotification === false ? (
-              <>
-                <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-                  <Link
-                    to="/alert"
-                    className="w-full h-full flex justify-center items-center flex-col"
-                  >
-                    <HiOutlineBellAlert className="text-[23px] my-[2px]" />
-                    Alerts
-                  </Link>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="w-[30%] h-[50px] flex flex-col text-[#e41c1b] justify-center items-center ">
-                  <Link
-                    to="/alert"
-                    className="w-full h-full flex justify-center items-center flex-col"
-                  >
-                    <HiMiniBellAlert className="bell text-[23px] my-[2px]" />
-                    Alerts
-                  </Link>
-                </div>
-              </>
-            )}
-            <div className="w-[30%] h-[50px] flex flex-col justify-center items-center ">
-              <Link
-                to="/dashboard"
-                className="w-full h-full flex justify-center items-center flex-col"
-              >
-                <MdOutlineSpaceDashboard className="text-[23px] my-[2px]" />
-                Dashboard
-              </Link>
-            </div>
-            <div
-              className="w-[30%] h-[50px] flex flex-col justify-center items-center  backdrop-blur-3xl"
-              onClick={() => {
-                setAccount(!account);
-              }}
-            >
-              {/* <Link className="w-full h-full"> */}
-              <VscAccount className="text-[23px] my-[2px]" />
-              Account
-              {/* </Link> */}
+                {/* <Link className="w-full h-full"> */}
+                <VscAccount className="text-[23px] my-[2px]" />
+                Account
+                {/* </Link> */}
+              </div>
             </div>
           </div>
         </>
