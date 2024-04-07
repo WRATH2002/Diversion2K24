@@ -153,27 +153,27 @@ const RecordData = () => {
             // style={{ transition: ".4s" }}
           >
             <div
-              className="w-[90%] h-[80%] flex flex-col justify-center items-center opacity-100"
+              className="w-[90%] md:w-[60%] lg:w-[60%] h-[80%] flex flex-col justify-center items-center opacity-100"
               // style={{ transition: ".2s", transitionDelay: ".6s" }}
             >
               <div className="w-full  font-bold text-[40px] text-[#ffa947] font-[google]  mt-[5px] flex flex-col justify-center items-center">
                 Fall Detected !
               </div>
               <div className="w-full text-white h-[60px] flex justify-center items-center text-center mt-[50px] font-[google]  text-[15px] px-[20px]">
-                Sending alert to Emergency Contact: Maa in 30 seconds. PLease
-                stay calm and wait for help. If you think this is not for
+                Sending alert to Emergency Contact: Ambulance in 30 seconds.
+                PLease stay calm and wait for help. If you think this is not for
                 concern, then click on Cancel Alert.
               </div>
-              <div className="w-full h-[50px] flex justify-between items-center text-center font-[google] mt-[40px] text-[15px] px-[20px]">
-                <div className="w-[29%] h-full rounded-lg  bg-[#162d27] text-white font-normal text-[20px] flex justify-center items-center">
+              <div className="w-[100%]  h-[80px] flex justify-between items-center text-center font-[google] mt-[40px] text-[15px] px-[20px]">
+                <div className="w-[29%] h-full rounded-lg  bg-[#162d27] text-white font-normal text-[35px] flex justify-center items-center">
                   00
                 </div>
                 {/* <span className="font-bold text-[25px]">:</span> */}
-                <div className="w-[29%] h-full rounded-lg bg-[#162d27] text-white font-normal text-[20px] flex justify-center items-center">
+                <div className="w-[29%] h-full rounded-lg bg-[#162d27] text-white font-normal text-[35px] flex justify-center items-center">
                   00
                 </div>
                 {/* <span className="font-bold text-[25px]">:</span> */}
-                <div className="w-[29%] h-full rounded-lg bg-[#162d27] text-white font-normal text-[20px] flex justify-center items-center">
+                <div className="w-[29%] h-full rounded-lg bg-[#162d27] text-white font-normal text-[35px] flex justify-center items-center">
                   {countDown < 10 ? <>0{countDown}</> : <>{countDown}</>}
                 </div>
               </div>
