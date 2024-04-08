@@ -13,7 +13,8 @@ import { HiMiniBellAlert } from "react-icons/hi2";
 import { VscAccount } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 import Data from "./Data";
-
+import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleUp } from "react-icons/fa6";
 // import { auth, db, st } from "../firebase";
 
 import firebase from "../firebase";
@@ -21,6 +22,21 @@ import { onSnapshot } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 // import { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
+
+const monthName = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 const Dashboard = () => {
   const [recordData, setRecordData] = useState();
@@ -41,6 +57,8 @@ const Dashboard = () => {
   const [lastUpdated, setLastUpdated] = useState(Date.now());
   // const [flag, setFlag] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [monthShow, setMonthShow] = useState(true);
+  const [month, setMonth] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -54,6 +72,10 @@ const Dashboard = () => {
     console.log("time changeddddd");
     console.log(Date.now());
   }, [recordData]);
+
+  useEffect(() => {
+    setMonthShow(false);
+  }, [month]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -184,11 +206,199 @@ const Dashboard = () => {
             {minimum} - {maximum} BPM
           </div>
           <div className="w-full h-[40px] flex justify-start items-center text-center font-[google]  text-[14px] px-[20px] mb-[15px] text-[#e1e1e1]">
-            Last 7 days
+            {monthShow === true ? (
+              <FaAngleUp
+                className="text-white text-[18px] mr-[13px]"
+                onClick={() => {
+                  setMonthShow(false);
+                }}
+              />
+            ) : (
+              <FaAngleDown
+                className="text-white text-[18px] mr-[13px]"
+                onClick={() => {
+                  setMonthShow(true);
+                }}
+              />
+            )}
+            {month != 0 ? (
+              <>
+                <span className="text-[#959595] mr-[7px]">Showing </span>{" "}
+                {monthName[month - 1]}{" "}
+                <div
+                  className="px-[10px] py-[4px] ml-[15px] rounded-xl bg-[#162d27] "
+                  onClick={() => {
+                    setMonth(0);
+                  }}
+                >
+                  Show All
+                </div>
+              </>
+            ) : (
+              <>Showing All</>
+            )}
+
+            {monthShow === true ? (
+              <div
+                className="fixed w-[340px] h-[160px] bg-[#162d27] flex justify-center items-center rounded-xl mt-[220px] z-50"
+                // style={{ transition: ".4s" }}
+              >
+                <div className="flex flex-col justify-start items-start w-[100px]">
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(1);
+                    }}
+                  >
+                    January
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(2);
+                    }}
+                  >
+                    February
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(3);
+                    }}
+                  >
+                    March
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(4);
+                    }}
+                  >
+                    April
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center items-start w-[100px]">
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(5);
+                    }}
+                  >
+                    May
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(6);
+                    }}
+                  >
+                    June
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(7);
+                    }}
+                  >
+                    July
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(8);
+                    }}
+                  >
+                    August
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center items-start w-[100px]">
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(9);
+                    }}
+                  >
+                    September
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(10);
+                    }}
+                  >
+                    October
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(11);
+                    }}
+                  >
+                    November
+                  </span>
+                  <span
+                    className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl "
+                    onClick={() => {
+                      setMonth(12);
+                    }}
+                  >
+                    December
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="fixed w-[340px] h-[0px] bg-[#162d27] flex justify-center items-center overflow-hidden rounded-xl mt-[220px] z-50"
+                // style={{ transition: ".4s" }}
+              >
+                <div className="flex flex-col justify-start items-start w-[100px]">
+                  <span className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    January
+                  </span>
+                  <span className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    February
+                  </span>
+                  <span className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    March
+                  </span>
+                  <span className="w-[100px] cursor-pointer hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    April
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center items-start w-[100px]">
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    May
+                  </span>
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    June
+                  </span>
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    July
+                  </span>
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    August
+                  </span>
+                </div>
+                <div className="flex flex-col justify-center items-start w-[100px]">
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    September
+                  </span>
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    October
+                  </span>
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    November
+                  </span>
+                  <span className="w-[100px] hover:bg-[#031e17] h-[30px] flex justify-start items-center px-[10px] rounded-xl ">
+                    December
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
           <div className="w-full px-[20px] flex justify-center items-center h-[170px] my-[20px]">
             <div className="w-full h-full ">
-              <Data />
+              <Data month={month} />
             </div>
           </div>
           {/* <div className="w-full h-[40px] flex justify-center items-center font-[google]  text-[18px] px-[20px]">

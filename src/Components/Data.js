@@ -14,7 +14,7 @@ import {
   Tooltip,
 } from "recharts";
 
-export const Data = () => {
+export const Data = (props) => {
   const [recordData, setRecordData] = useState();
   const [dd, setDd] = useState([]);
   useEffect(() => {
@@ -25,9 +25,17 @@ export const Data = () => {
     if (recordData) {
       d();
     }
-  }, [recordData]);
+  }, [recordData, props.month]);
 
   function d() {
+    let filteredArray = recordData;
+    console.log(props.month);
+    if (props.month != 0) {
+      filteredArray = recordData.filter((obj) => obj.day === props.month);
+    } else if (props.month != 0) {
+      filteredArray = recordData;
+    }
+
     let newArray = [];
     let uniqueObject = {};
     let indexHour = 1;
@@ -36,12 +44,12 @@ export const Data = () => {
     let min = 1000;
     let max = 0;
     let count = 0;
-    for (let i in recordData) {
-      let objTitle = recordData[i]["Hour"];
-      if (recordData[i].Hour === indexHour) {
+    for (let i in filteredArray) {
+      let objTitle = filteredArray[i]["Hour"];
+      if (filteredArray[i].Hour === indexHour) {
         count = count + 1;
       } else {
-        indexHour = recordData[i].Hour;
+        indexHour = filteredArray[i].Hour;
         sum = 0;
         min = 1000;
         max = 0;
@@ -49,12 +57,12 @@ export const Data = () => {
         count = 1;
       }
 
-      sum = sum + recordData[i].Bpm;
-      if (recordData[i].Bpm < min) {
-        min = recordData[i].Bpm;
+      sum = sum + filteredArray[i].Bpm;
+      if (filteredArray[i].Bpm < min) {
+        min = filteredArray[i].Bpm;
       }
-      if (recordData[i].Bpm > max) {
-        max = recordData[i].Bpm;
+      if (filteredArray[i].Bpm > max) {
+        max = filteredArray[i].Bpm;
       }
 
       uniqueObject[objTitle] = {
@@ -91,8 +99,9 @@ export const Data = () => {
 
   return (
     <div className="w-full h-full">
-      <ResponsiveContainer width="100%" height="100%">
-        {/* <LineChart
+      {dd.length != 0 ? (
+        <ResponsiveContainer width="100%" height="100%">
+          {/* <LineChart
         width={500}
         height={300}
         data={dd}
@@ -109,22 +118,22 @@ export const Data = () => {
         <Line type="monotone" dataKey="Avg" stroke="#3b82f6" />
       </LineChart> */}
 
-        {/* <ResponsiveContainer width="100%" height="100%"> */}
-        {/* <LineChart width={300} height={100} data={dd}>
+          {/* <ResponsiveContainer width="100%" height="100%"> */}
+          {/* <LineChart width={300} height={100} data={dd}>
         <Line type="monotone" dataKey="Avg" stroke="#8884d8" strokeWidth={2} />
       </LineChart> */}
-        {/* </ResponsiveContainer> */}
-        <AreaChart width={730} height={250} data={dd}>
-          <defs>
-            <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="55%" stopColor="#274c43" stopOpacity={0.8} />
-              <stop offset="100%" stopColor="#274c43" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          {/* <XAxis dataKey="name" /> */}
-          {/* <YAxis /> */}
-          <Tooltip />
-          {/* <Area
+          {/* </ResponsiveContainer> */}
+          <AreaChart width={730} height={250} data={dd}>
+            <defs>
+              <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="55%" stopColor="#274c43" stopOpacity={0.8} />
+                <stop offset="100%" stopColor="#274c43" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            {/* <XAxis dataKey="name" /> */}
+            {/* <YAxis /> */}
+            <Tooltip />
+            {/* <Area
           type="monotone"
           dataKey="Max"
           stroke="#3b82f6"
@@ -138,15 +147,20 @@ export const Data = () => {
           fillOpacity={1}
           fill="url(#colorMin)"
         /> */}
-          <Area
-            type="monotone"
-            dataKey="Avg"
-            stroke="#162d27"
-            fillOpacity={1}
-            fill="url(#colorAvg)"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+            <Area
+              type="monotone"
+              dataKey="Avg"
+              stroke="#162d27"
+              fillOpacity={1}
+              fill="url(#colorAvg)"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      ) : (
+        <div className="w-full h-full flex justify-center items-center font-[google] text-[20px] text-[#ffffff]">
+          <div>No Data to Show</div>
+        </div>
+      )}
     </div>
     // <div>hello</div>
   );
