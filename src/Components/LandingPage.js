@@ -101,12 +101,24 @@ const LandingPage = () => {
             >
               Log Out
             </div>
-            <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+            <Link
+              to="/documentation"
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+            >
               Documentation
-            </div>
-            <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+            </Link>
+            {/* <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Documentation
+            </div> */}
+            <Link
+              to="/solutions"
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+            >
               Solution
-            </div>
+            </Link>
+            {/* <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Solution
+            </div> */}
           </div>
         </>
       ) : (

@@ -178,13 +178,33 @@ const Dashboard = () => {
     <>
       {account === true ? (
         <>
-          <div
-            className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50"
-            onClick={() => {
-              userSignOut();
-            }}
-          >
-            Log Out
+          <div className="w-[150px] h-[120px] rounded-xl bg-[white] fixed bottom-[80px] z-50 right-[20px]">
+            <div
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+              onClick={() => {
+                userSignOut();
+              }}
+            >
+              Log Out
+            </div>
+            <Link
+              to="/documentation"
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+            >
+              Documentation
+            </Link>
+            {/* <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Documentation
+            </div> */}
+            <Link
+              to="/solutions"
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+            >
+              Solution
+            </Link>
+            {/* <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Solution
+            </div> */}
           </div>
         </>
       ) : (

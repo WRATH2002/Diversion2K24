@@ -130,13 +130,33 @@ const RecordData = () => {
     <>
       {account === true ? (
         <>
-          <div
-            className="fixed bottom-[80px] right-[20px] flex justify-center items-center bg-[#e2f9fd] rounded-xl w-[100px] h-[50px] z-50"
-            onClick={() => {
-              userSignOut();
-            }}
-          >
-            Log Out
+          <div className="w-[150px] h-[120px] rounded-xl bg-[white] fixed bottom-[80px] z-50 right-[20px]">
+            <div
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+              onClick={() => {
+                userSignOut();
+              }}
+            >
+              Log Out
+            </div>
+            <Link
+              to="/documentation"
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+            >
+              Documentation
+            </Link>
+            {/* <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Documentation
+            </div> */}
+            <Link
+              to="/solutions"
+              className="flex justify-center items-center rounded-xl w-full h-[40px] z-50"
+            >
+              Solution
+            </Link>
+            {/* <div className="flex justify-center items-center rounded-xl w-full h-[40px] z-50">
+              Solution
+            </div> */}
           </div>
         </>
       ) : (
@@ -216,7 +236,7 @@ const RecordData = () => {
                     </div>
                     {wornStatus === false ? (
                       <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffa947]">
-                        Device not Worned
+                        Device not Worn
                       </div>
                     ) : loading === true ? (
                       <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffffff]">
@@ -224,7 +244,7 @@ const RecordData = () => {
                       </div>
                     ) : (
                       <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#7cd74c]">
-                        Device Worned
+                        Device Worn
                       </div>
                     )}
                     {/* <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#b52f2f]">
@@ -244,7 +264,7 @@ const RecordData = () => {
                     </div>
                     {wornStatus === false ? (
                       <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffa947]">
-                        Device not Worned
+                        Device not Worn
                       </div>
                     ) : loading === true ? (
                       <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#ffffff]">
@@ -252,7 +272,7 @@ const RecordData = () => {
                       </div>
                     ) : (
                       <div className="w-full h-[141px] font-normal text-[25px] mt-[5px] text-[#7cd74c]">
-                        Device Worned
+                        Device Worn
                       </div>
                     )}
                     {/* <div className="w-full h-[175px] font-bold text-[25px] mt-[5px] text-[#b52f2f]">
