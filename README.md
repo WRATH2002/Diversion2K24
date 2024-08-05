@@ -7,16 +7,18 @@
 # Project Overview
 This project consists of a smart wearable device built with the following components:
 
-# Arduino Uno
+Arduino Uno
+
 Accelerometer and Gyroscope Module
+
 RTC (Real-Time Clock) Module
+
 The wearable device continuously monitors the user's heart rate and detects any sudden falls. The collected data is then transmitted to a web application for real-time monitoring and analysis.
 
 # Website
 The CheckYourHealth website is built using modern web technologies, including:
 
-React JS
-
+*React JS*
 JavaScript
 
 Python
