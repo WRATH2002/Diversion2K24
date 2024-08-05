@@ -16,11 +16,18 @@ The wearable device continuously monitors the user's heart rate and detects any 
 The CheckYourHealth website is built using modern web technologies, including:
 
 React JS
+
 JavaScript
+
 Python
+
 HTML
+
 CSS
+
 Tailwind CSS
+
+
 The website provides a comprehensive dashboard to visualize the data collected from the wearable device. It includes features to display heart rate trends and fall detection alerts.
 
 # Features
