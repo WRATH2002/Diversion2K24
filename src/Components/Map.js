@@ -11,7 +11,7 @@ import L from "leaflet";
 
 // import "./MapStyles.css";
 const API_KEY = process.env.REACT_APP_MAP_API_KEY;
-// const API_KEY = "7241661971c942329e30dacf9777fe1f";
+
 const latitude = 28.2015;
 const longitude = 83.9833;
 delete L.Icon.Default.prototype._getIconUrl;
