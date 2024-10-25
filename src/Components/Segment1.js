@@ -13,27 +13,26 @@ import three3 from "../Assets/img/12.png";
 const Segment1 = () => {
   return (
     <div className="w-full h-[calc(100svh-70px)] flex flex-col md:flex-row lg:flex-row justify-center items-center md:justify-center md:items-center lg:justify-center lg:items-center   ">
-      <div className="w-full  md:w-[50%] lg:w-[50%]  h-full flex justify-center items-center  text-[white] font-[google] pr-[0] md:pr-[20px] lg:pr-[20px] ">
-        <div className="w-full h-full flex flex-col items-center justify-center ">
-          <span className="leading-[1] text-[27px] md:text-[26px] lg:text-[26px] text-[#dcdcdc]  font-[google] w-full">
+      <div className="w-full  md:w-[50%] lg:w-[50%]  h-full flex justify-center items-center  text-[#000000] font-[geist] pr-[0] md:pr-[20px] lg:pr-[20px] ">
+        <div className="w-[100%] h-full flex flex-col items-center justify-center ">
+          <span className="leading-[1] text-[23px] md:text-[26px] lg:text-[26px] text-[#7c7c7c]  font-[geist] w-full">
             embrace wellness
           </span>
-          <span className="font-bold leading-[1] text-[55px] md:text-[55px] lg:text-[55px] text-[#ffffff] font-[google] mt-[15px] w-full flex justify-start">
-            Vital Tracker
+          <span className="font-bold leading-[1] tracking-wide text-[35px] md:text-[55px] lg:text-[55px] text-[#000000] font-[geist] mt-[15px] w-full flex justify-start">
+            By Vital Tracker
           </span>
-          <span className="leading-normal font-light text-[18px] md:text-[15px] lg:text-[15px] mt-[40px] font-[google] text-[#b7b7b7] w-full overflow-hidden text-ellipsis text-justify">
+          <span className="leading-normal text-[15px] md:text-[15px] lg:text-[15px] mt-[40px] font-[geist] text-[#4b4b4b] w-full overflow-hidden text-ellipsis  font-medium">
             Introducing our life-saving smart wrist gadget – a guardian for the
             elderly and the sick. With a mission to reduce the alarming
             statistics of falls, our innovative device employs cutting-edge
             technology{" "}
-            <span className="text-[#56bf64]  font-['google']">
+            <span className="text-[#000000] font-['geist'] font-semibold">
               and advanced algorithms{" "}
-            </span>
-            to swiftly detect falls,
-            <span className="text-[#56bf64] font-['google']">
-              {" "}
-              triggering immediate alerts
             </span>{" "}
+            to swiftly detect falls,
+            <span className="text-[#000000] font-['geist'] font-semibold">
+              triggering immediate alerts
+            </span>
             for timely assistance. Prioritize safety and well-being invest in
             peace of mind today.
           </span>

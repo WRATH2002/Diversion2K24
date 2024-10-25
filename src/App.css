@@ -9,7 +9,6 @@
   -webkit-backdrop-filter: blur(15px);
   border-radius: 10px;
 }
-
 .gg {
   background-image: url(./Assets/img/front.png);
   background-position: center;
@@ -48,8 +47,12 @@
   src: url(./Assets/font/JetBrainsMono-Regular.ttf);
 }
 @font-face {
-  font-family: mukta;
-  src: url(./Assets/font/Mukta-Regular.ttf);
+  font-family: google;
+  src: url(./Assets/font/Geist-Regular.ttf);
+}
+@font-face {
+  font-family: geist;
+  src: url(./Assets/font/Geist-Regular.ttf);
 }
 @font-face {
   font-family: one;
@@ -83,7 +86,7 @@
   border-radius: 10px;
 }
 
-span,
+/* span,
 img {
   animation: fade linear both;
   animation-timeline: view();
@@ -94,7 +97,7 @@ img {
   animation: fade linear both;
   animation-timeline: view();
   animation-range: entry 70% cover 30%;
-}
+} */
 
 @keyframes fade {
   from {

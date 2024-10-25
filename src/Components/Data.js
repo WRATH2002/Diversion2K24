@@ -101,56 +101,20 @@ export const Data = (props) => {
     <div className="w-full h-full">
       {dd.length != 0 ? (
         <ResponsiveContainer width="100%" height="100%">
-          {/* <LineChart
-        width={500}
-        height={300}
-        data={dd}
-        margin={{
-          right: 30,
-        }}
-      >
-        <XAxis dataKey="Hour" />
-        <YAxis type="number" domain={[50, "dataMax + 20"]} />
-        <Tooltip content={<CustomTooltip />} />
-        <Legend />
-        <Line type="monotone" dataKey="Max" stroke="#ff7b00" />
-        <Line type="monotone" dataKey="Min" stroke="#72f63b" />
-        <Line type="monotone" dataKey="Avg" stroke="#3b82f6" />
-      </LineChart> */}
-
-          {/* <ResponsiveContainer width="100%" height="100%"> */}
-          {/* <LineChart width={300} height={100} data={dd}>
-        <Line type="monotone" dataKey="Avg" stroke="#8884d8" strokeWidth={2} />
-      </LineChart> */}
-          {/* </ResponsiveContainer> */}
           <AreaChart width={730} height={250} data={dd}>
             <defs>
               <linearGradient id="colorAvg" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="55%" stopColor="#274c43" stopOpacity={0.8} />
-                <stop offset="100%" stopColor="#274c43" stopOpacity={0} />
+                <stop offset="55%" stopColor="#BDCEDE" stopOpacity={0.8} />
+                <stop offset="100%" stopColor="#BDCEDE" stopOpacity={0} />
               </linearGradient>
             </defs>
-            {/* <XAxis dataKey="name" /> */}
-            {/* <YAxis /> */}
+
             <Tooltip />
-            {/* <Area
-          type="monotone"
-          dataKey="Max"
-          stroke="#3b82f6"
-          fillOpacity={1}
-          fill="url(#colorMax)"
-        />
-        <Area
-          type="monotone"
-          dataKey="Min"
-          stroke="#72f63b"
-          fillOpacity={1}
-          fill="url(#colorMin)"
-        /> */}
+
             <Area
               type="monotone"
               dataKey="Avg"
-              stroke="#162d27"
+              stroke="#BDCEDE"
               fillOpacity={1}
               fill="url(#colorAvg)"
             />
