@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { Share2 } from "lucide-react";
 
 // import { ring } from "ldrs";
 
@@ -131,8 +132,8 @@ const Map = (props) => {
     if (navigator.share) {
       navigator
         .share({
-          title: "Check out my location!",
-          text: `Here is my location:`,
+          title: "Check out this location!",
+          text: `🆘 Fall detected! Immediate assistance requested`,
           url: `https://www.google.com/maps?q=${lat},${long}`, // Share the Google Maps link
         })
         .then(() => console.log("Successful share"))
@@ -200,7 +201,6 @@ const Map = (props) => {
               // width: "400px",
               // height: "400px",
             }}
-            onClick={shareLocation}
           >
             {/* <div
                 className="max-w-[35px] max-h-[35px] rounded-[6px] bg-white flex justify-center items-center mr-[-45px] ml-[10px] mt-[10px]"
@@ -226,7 +226,7 @@ const Map = (props) => {
               </div> */}
             <MapContainer
               center={[lat, long]}
-              zoom={20}
+              zoom={15}
               style={{ height: "100%", width: "100%" }}
               zoomControl={false} // Disable default zoom controls
               attributionControl={false} // Disable attribution
@@ -252,10 +252,11 @@ const Map = (props) => {
             </MapContainer>
           </div>
           <div
-            className="px-[9px] h-[25px]  mb-[7px] mr-[7px] z-50 mt-[-32px] py-[5px] rounded-lg text-[13px] bg-[#000000a8] flex justify-center items-center text-[white]"
+            className="w-[30px] h-[30px]  mb-[7px] mr-[7px] z-50 mt-[-37px] py-[5px] rounded-[10px] text-[13px] bg-[#000000] flex justify-center items-center text-[white] cursor-pointer"
             style={{ zIndex: "100" }}
+            onClick={shareLocation}
           >
-            Lat : {lat}, Long : {long}
+            <Share2 width="16" height="16" strokeWidth="1.7" />
           </div>
         </>
       )}
