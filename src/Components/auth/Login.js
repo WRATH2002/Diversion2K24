@@ -97,7 +97,7 @@ const Login = (props) => {
           onChange={(e) => setEmail(e.target.value)}
         ></input>
         <input
-          className=" outline-none     w-full h-[50px] my-[10px] rounded-xl px-[15px] font-normal text-[16px] text-[#ffffff] bg-[#ffffff] font-[geist]"
+          className=" outline-none     w-full h-[50px] my-[10px] rounded-xl px-[15px] font-normal text-[16px] text-[#000000] bg-[#ffffff] font-[geist]"
           placeholder="Password"
           type="password"
           value={password}

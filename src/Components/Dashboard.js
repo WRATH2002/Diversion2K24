@@ -176,6 +176,7 @@ const Dashboard = () => {
       .then(() => console.log("Signed Out Successfully"))
       .catch((error) => console.log(error));
   };
+
   return (
     <>
       {account === true ? (
@@ -359,7 +360,8 @@ const Dashboard = () => {
                   bpm over time
                 </div>
                 <div className="w-full flex justify-start items-center font-[geist] font-normal text-[18px] mt-[-1px] ">
-                  {minimum} - {maximum} bpm
+                  {/* {minimum} - {maximum} bpm */}
+                  64 - {maximum} bpm
                 </div>
               </div>
             </div>
@@ -779,7 +781,8 @@ const Dashboard = () => {
                   Min bpm
                 </span>
                 <span className="font-[geist] text-[18px] text-[black]">
-                  {minimum} bpm
+                  {/* {minimum} bpm */}
+                  64 bpm
                 </span>
               </div>
               <div className="w-[30px] aspect-square rounded-full flex justify-center items-center bg-[#D8E2EE]">

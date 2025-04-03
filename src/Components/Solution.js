@@ -253,12 +253,19 @@ const Solution = () => {
               Accelerometer and Gyro Sensor)
             </div>
             <div className="flex justify-start items-center">
-              <span className="mr-[4px] text-[18px]">•</span> RTC-DS3212 (Real
+              <span className="mr-[4px] text-[18px]">•</span> RTC-DS3231 (Real
               Time Clock Module)
             </div>
             <div className="flex justify-start items-center">
               <span className="mr-[4px] text-[18px]">•</span> SEN-11574 (Pulse
               Sensor)
+            </div>
+            <div className="flex justify-start items-center">
+              <span className="mr-[4px] text-[18px]">•</span> 16X2 LCD Display
+            </div>
+            <div className="flex justify-start items-center">
+              <span className="mr-[4px] text-[18px]">•</span> NEO 6M - (GPS
+              Module)
             </div>
           </span>
 

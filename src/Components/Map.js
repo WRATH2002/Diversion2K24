@@ -142,6 +142,7 @@ const Map = (props) => {
       alert("Web Share API is not supported in your browser.");
     }
   };
+  
 
   return (
     <div className="w-full h-full flex flex-col justify-end items-end rounded-xl bg-[#F7F8FA] drop-shadow-sm font-[geist] ">
